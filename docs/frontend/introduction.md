@@ -86,6 +86,30 @@ We'll end up with a directory structure like this:
   <dd>Routeable pages.</dd>
 </dl>
 
+## Configuring our environment variables
+
+There are a number of `.env` files in our main directory to set variables:
+
+```shell
+.env.local
+.env.development.android
+.env.development.ios
+.env.development.web
+.env.production.android
+.env.production.ios
+.env.production.web
+```
+
+We also have `.env.local` to provide variables shared for all build types:
+
+```js
+VUE_APP_BASE_URL=http://localhost:8080
+VUE_APP_API_URL=http://
+VUE_APP_OAUTH_CLIENT_ID=2
+VUE_APP_OAUTH_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxx
+VUE_APP_GOOGLE_TOKEN=AIzxxxxxxxxxxxxxxxxx-xxxxxxxxxx
+```
+
 ## Sharing Native and Web code
 
 It's possible to use a Single File Component mixing both web and native code, something like this:
