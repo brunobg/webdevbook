@@ -1,0 +1,14 @@
+{
+  "name": "bookwebdev",
+  "version": "0.0.1",
+  "description": "Web and Native Development",
+  "author": "Bruno Barberi Gnecco",
+  "private": true,
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "dependencies": {
+    "vuepress": "^1.5.1"
+  }
+}
