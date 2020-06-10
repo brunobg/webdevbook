@@ -9,6 +9,8 @@ We'll store local states on each Vue page component, and use [Vuex](https://vuex
 
 Vuex is a state management pattern and library for Vue.js applications. It serves as a centralized store for all the components in an application, with rules ensuring that the state can only be mutated in a predictable fashion. It integrates nicely with the devtools extension, too, making it easy to debug. Vuex works on both the native and web versions, but long term storage is different for each of them. Unless you are fine with making the users login each time they open the app, we need to implement local storage to remember them.
 
+## Initialization and storage
+
 We'll add a little wrapper like this:
 
 <dl>
@@ -24,40 +26,21 @@ The `store` files only differ because the permanent storage methods are differen
 
 The web version looks like this, using [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate) to save data in local storage.
 
-```js
-import Vue from "vue";
-import Vuex from "vuex";
-import storedata from "./storedata";
-import createPersistedState from "vuex-persistedstate";
-
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-    ...storedata,
-    plugins: [createPersistedState({
-        key: 'storev1',
-        paths: ['user']
-    })],
-});
-```
+<<< @/../client/src/store.js
 
 Notice that we are using too arguments for the persisted state:
 
 * *key*: we might change our data in a way that is incompatible with the previous version at some point. By using a key we can ensure that we are not using old, now invalid data. 
 * *paths*: here we choose which data is persisted. This allows us to use Vuex to cache data temporarily. 
 
-The native version is similar, but using another
+The native version is similar, but using another plugin for storage:
 
-```js
-import Vue from "vue";
-import Vuex from "vuex";
-import storedata from "./storedata";
-import NSVuexPersist from "ns-vuex-persist";
+<<< @/../client/src/store.native.js
 
-Vue.use(Vuex);
+## Store format
 
-export default new Vuex.Store({
-    ...storedata,
-    plugins: [NSVuexPersist(["user"], 'storev1')],
-});
-```
+So at this point we have Vuex running. Let's create its actual data in `storedata.js`. At this point we have only one module, the user. Let's create its data structure and add mutations to update it, update the token and logout.
+
+<<< @/../client/src/storedata.js
+
+We also provide a simple getter, `isLogged()`. Any state from the user will be in this store.

@@ -88,8 +88,6 @@ We'll end up with a directory structure like this:
 
 ## Sharing Native and Web code
 
-There are two different entry points for this project, `src/main.js` and `src/main.native.js`. This makes it easy to setup basic code that differs for native and web.
-
 It's possible to use a Single File Component mixing both web and native code, something like this:
 
 ```html
@@ -99,22 +97,31 @@ It's possible to use a Single File Component mixing both web and native code, so
   </span>
 </template>
 <template native>
-  <Label text="Something" class="myclass"/>
+  <label text="Something" class="myclass" />
 </template>
 
-<script native>
-</script>
+<script native></script>
 
-<script web>
-</script>
+<script web></script>
 
-<style native>
-</style>
-<style web>
-</style>
+<style native></style>
+<style web></style>
 ```
 
-Not all tags need a web/native version. You can have the same `<script>` for both. If you need to have completely different versions of the files it's easier to create a file.native.js, which will be loaded automatically for native builds.
+Not all tags need a web/native version. You can have the same `<script>` for both. If you need to have completely different versions of the files it's easier to create separate files, which will be loaded automatically according to the build. This is valid for vue or js files:
+
+<dl>
+  <dt>file.android.vue</dt>
+  <dd>Loaded by the Android build, if this file exists</dd>
+  <dt>file.ios.vue</dt>
+  <dd>Loaded by the iOS build, if this file exists</dd>
+  <dt>file.native.vue</dt>
+  <dd>Loaded by the native build, if this file exists and the specific (Android/iOS) file does not exist</dd>
+  <dt>file.vue</dt>
+  <dd>The web/native version, replaced by the above files if they exist</dd>
+</dl>
+
+We organize the code for this book to use a single `file.js` with separate `<template>` in most cases, and when the `<script>` part also differs we use separate files.
 
 Sometimes you need to run only a few extra lines in one of the builds. It's easy to do it with an if. The only drawback is that you can't `import` external code that only works natively or on web inside the if.
 
@@ -136,15 +143,15 @@ isWeb() {
 }
 ```
 
-You'll end up with several minor functions like this which are useful all through your project. It's easier to add them to a 
+You'll end up with several minor functions like this which are useful all through your project. It's easier to add them to a
 
 ```js
 import PageMixin from "~/modules/pagemixin";
 Vue.mixin(PageMixin);
 ```
 
-```js 
-import pagemixinsub from './pagemixinsub';
+```js
+import pagemixinsub from "./pagemixinsub";
 
 export default {
   methods: {
@@ -153,12 +160,12 @@ export default {
     // shared code goes here
 
     isNative() {
-      return (process.env.VUE_APP_MODE == 'native');
+      return process.env.VUE_APP_MODE == "native";
     },
 
     isWeb() {
-      return (process.env.VUE_APP_MODE == 'web');
-    }
+      return process.env.VUE_APP_MODE == "web";
+    },
   },
 };
 ```
@@ -169,21 +176,18 @@ One helpful way to setup this mixin is to write shared code directly there, but 
 
 For example, you can have a single `this.confirm()` method available on all Vue components that returns a promise and works for web and native:
 
-```js 
+```js
 export default {
   methods: {
     confirm(message, title = "My app", okButtonText = "OK") {
-      return new Promise(
-        (resolve, reject) => {
-          if (confirm(message)) {
-            resolve();
-          }
-          else {
-            reject();
-          }
+      return new Promise((resolve, reject) => {
+        if (confirm(message)) {
+          resolve();
+        } else {
+          reject();
         }
-      );
-    }
+      });
+    },
   },
 };
 ```
@@ -199,10 +203,11 @@ export default {
       return dialogs.confirm({
         title,
         okButtonText,
-        message
+        message,
       });
-    }
+    },
   },
 };
 ```
 
+There are two different entry points for this project, `src/main.js` and `src/main.native.js`. This makes it easy to setup basic code that differs for native and web.

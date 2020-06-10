@@ -14,6 +14,7 @@ module.exports = {
           '/frontend/debug',
           '/frontend/stateandstorage',
           '/frontend/authentication',
+          '/frontend/communication',
           '/frontend/models',
           '/frontend/testing',
           '/frontend/i18n',
