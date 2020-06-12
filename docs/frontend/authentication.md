@@ -8,9 +8,11 @@ You'll likely need users to authenticate on your app. There are currently a few 
 
 For the frontend JWT and bearer tokens are very similar, since in both cases you send them as part of your requests. We'll show how to implement a bearer token authorization for this app, both with local logins and with 3rd party OAuth logins.
 
-## Designing a good login/sign up form
+### Designing a good login/sign up form
 
 Avoid too many fields in your sign up form. Ideally your application will require only email and password (or the OAuth login). Are you sure you need a unique username? If you do, add that. Every extra field you add makes people more prone to give it up because there's too much to fill.
+
+Remember that social logins often have branding guidelines, like [Google](https://developers.google.com/identity/branding-guidelines). Follow them when implementing your buttons.
 
 ## Local logins
 
@@ -20,11 +22,13 @@ A local login does not validate against a third party; you use an email or uniqu
 
 Our registration flow is like this.
 
-1. validate user data on form
+1. validate user data on the client and show any errors
 1. request user registration on the server. User is created on the server, check for errors
 1. perform the login flow on the server.
 
 By separating in two steps, one for registration and another for login, we ensure that any changes to the login procedure (such as processing user data to do something on the app) are performed exactly the same on the registration and avoid maintaining two paths.
+
+TODO
 
 ### Login
 
@@ -51,7 +55,7 @@ login() {
         .catch((error) => {
             this.processing = false;
         });
-
+}
 ```
 
 The actual rest call is here:
@@ -82,6 +86,7 @@ AuthProvider(provider) {
   this.$auth.authenticate(provider)
   .catch((e) => {
     if (e.message == "Auth popup window closed") {
+      // user gave up with logging in
       throw new Error("Ok");
     }
   })
@@ -100,6 +105,7 @@ AuthProvider(provider) {
 
 ### Nativescript
 
+TODO
 `nativescript-oauth`
 
 ### Asking the user for more data
@@ -126,12 +132,12 @@ We implement logout like this:
 
 ```js
 logout() {
-    let p = this.fetch(`/me/logout`, {
-        data: '',
-        method: "POST",
-    });
-    vue.$store.commit("logout");
-    return p;
+  let p = this.fetch(`/me/logout`, {
+      data: '',
+      method: "POST",
+  });
+  vue.$store.commit("logout");
+  return p;
 }
 ```
 

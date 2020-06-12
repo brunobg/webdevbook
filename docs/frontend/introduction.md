@@ -4,12 +4,22 @@ So you want to build the frontend for a native and web application. You don't wa
 
 We assume that you have some familiarity with Javascript and [VueJS](https://vuejs.org). You might not have ever seen [NativeScript](https://nativescript.org/) (TNS), which is an open source framework for building truly native mobile apps with Angular, Vue.js, TypeScript, or JavaScript, which compiles to iOS or Android applications. We are adopting it because [it provides integration with VueJS](https://nativescript-vue.org/) and we can share most of our code between Web and Native versions of the application, changing only the interface code. This solves a major problem of keeping web, ios and Android versions of the same application, which is maintaining three different code bases. With this approach we maintain a single code base, with two different view templates, HTML and NS. It becomes closer to maintaining a responsive application. This is not a tutorial of TNS, however; see its site for that. The frontend part of this book is about how to structure your code and how to solve the most common problems that we often face.
 
+## Setup your computer
+
+We'll use NodeJS and yarn for the code in this book. Install them according to their instructions.
+
+::: tip
+We'll use `yarn` on this book, but of course `npm` would work just as well.
+:::
+
 ## Setup the project
 
 We will not follow the scaffolding from [the nativescript getting started guide](https://nativescript-vue.org/en/docs/getting-started/quick-start/). The reason is that it doesn't play well with the usual vue-cli setup to build the web version. Instead we follow [its other setup](https://nativescript-vue.org/en/docs/getting-started/code-sharing/) which is based on vue-cli and should be more familiar to most people. Let's create our application:
 
 ```shell
 $ yarn global add @vue/cli
+$ yarn global add nativescript
+
 $ vue create our-client
 # You should add babel and webpack when asked.
 
@@ -17,14 +27,10 @@ $ cd our-client
 $ vue add vue-cli-plugin-nativescript-vue
 ```
 
-::: tip
-We'll use `yarn` on the docs, but of course `npm` would work just as well.
-:::
-
-Some questions will be asked. Fill with your correct app identifier. Prefer the history mode -- it is nicer the user and you can use the HTML5 history API.
+Some questions will be asked. Fill with your correct app identifier. Prefer the history mode -- it is nicer the user and you can use the HTML5 history API:
 
 ```
-? Enter a unique application identifier: org.nativescript.application
+? Enter a unique application identifier: org.yourcompany.yourapplication
 ? Use HTML5 history mode? (Default: hash mode) Yes
 ? Is this a brand new project? (Default: Yes) Yes
 ? Dual Native AND Web development experience or a Native only? (Default: Dual) Dual Native AND Web
@@ -61,6 +67,8 @@ We have several build targets, and our package.json shows this.
   <dd>Runs the software on the actual device. For web this provides a webserver with hot reloading.</dd>
 </dl>
 
+Our build uses Webpack, and comes already configured from the project template. We'll have more to talk about this [on the deployment chapter](./deployment.md). If you are in a rush to see something in your web browser, `yarn serve:web` is what you want.
+
 ## Code structure
 
 We'll end up with a directory structure like this:
@@ -73,7 +81,7 @@ We'll end up with a directory structure like this:
   <dt>platforms/</dt>
   <dd>Build directory for native app</dd>
   <dt>public/</dt>
-  <dd>Directory for public files. Things here will be copied as they are to the web version</dd>
+  <dd>Directory for public files. Things here will be copied as they are to the deployment package</dd>
   <dt>src/</dt>
   <dd>The actual code</dd>
   <dt>src/assets</dt>
@@ -100,7 +108,7 @@ There are a number of `.env` files in our main directory to set variables:
 .env.production.web
 ```
 
-We also have `.env.local` to provide variables shared for all build types:
+We also have `.env.local` to provide variables shared for all build types. This allows you to easily set data that depends on where it's running, adapting it for development or production environments.
 
 ```js
 VUE_APP_BASE_URL=http://localhost:8080
@@ -132,7 +140,7 @@ It's possible to use a Single File Component mixing both web and native code, so
 <style web></style>
 ```
 
-Not all tags need a web/native version. You can have the same `<script>` for both. If you need to have completely different versions of the files it's easier to create separate files, which will be loaded automatically according to the build. This is valid for vue or js files:
+Not all tags need a web/native version: the idea is to share the same code as much as possible. You can have the same `<script>` for both. If you need to have completely different versions of the files for template, script and style it's easier to create separate files, which will be loaded automatically according to the build. This is valid for vue or js files:
 
 <dl>
   <dt>file.android.vue</dt>
@@ -167,12 +175,7 @@ isWeb() {
 }
 ```
 
-You'll end up with several minor functions like this which are useful all through your project. It's easier to add them to a
-
-```js
-import PageMixin from "~/modules/pagemixin";
-Vue.mixin(PageMixin);
-```
+You'll end up with several minor functions like this which are useful all through your project. It's easier to add them to a mixin:
 
 ```js
 import pagemixinsub from "./pagemixinsub";
@@ -194,13 +197,21 @@ export default {
 };
 ```
 
+which you can load on `main.js`:
+
+```js
+import PageMixin from "~/modules/pagemixin";
+Vue.mixin(PageMixin);
+```
+
 ::: tip
-One helpful way to setup this mixin is to write shared code directly there, but separate platform specific in `pagemixinsub.js` and `pagemixinsub.native.js` files.
+One helpful way to setup this utility mixin is to write shared code directly on `pagemixin.js`, but separate platform specific in `pagemixinsub.js` and `pagemixinsub.native.js` files, which are included like in the example above. This pattern works whenever you want a base code that is shared between all architectures but with specific functions overriden.
 :::
 
 For example, you can have a single `this.confirm()` method available on all Vue components that returns a promise and works for web and native:
 
 ```js
+// web version
 export default {
   methods: {
     confirm(message, title = "My app", okButtonText = "OK") {
@@ -216,9 +227,10 @@ export default {
 };
 ```
 
-Native version:
+Nativescript version:
 
 ```js
+// nativescript version
 const dialogs = require("tns-core-modules/ui/dialogs");
 
 export default {

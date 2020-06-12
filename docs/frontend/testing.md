@@ -1,6 +1,10 @@
-# Testing
+# Testing and Deployment
 
 Any project without automatic tests is bound to break and go to production broken. Tests avoid regression. Tests are also the last thing many people implement, if ever. We'll see how easy it is to add a few automatic tests
+
+:::tip
+There are many tools for Continuous Integration and Continuous Delivery these days. They automate your tests and run then on every commit. Take a look at [Jenkins](https://www.jenkins.io/) for example.
+:::
 
 ## Unit tests with Mocha
 
@@ -8,6 +12,14 @@ Unit tests of the frontend can check that the implementation is doing what is ex
 
 :::tip
 A unit test can quickly become a feature test -- and whether that is right or wrong depends on who you're talking to. Unit tests should be about single units of code, ensuring they are working as expected. Often bugs happen when you integrate code; two pieces of code which are correctly working in separate have a bug when called together. Feature tests catch those bugs. On the frontend simulating a browser for feature tests can quickly become hard to manage, so perhaps an E2E test might be more appropriate.
+:::
+
+```shell
+yarn test:mocha
+```
+
+:::tip
+Using VSCode? Check [the mocha sidebar](https://marketplace.visualstudio.com/items?itemName=maty.vscode-mocha-sidebar)
 :::
 
 ## End-to-end web tests with Cypress
@@ -24,11 +36,13 @@ We'll use [Cypress](https://www.cypress.io/) to implement E2E here, but the idea
 
 ```shell
 yarn add cypress faker --dev
+./node_modules/.bin/cypress open
+
 ```
 
 This will create a `cypress/` directory.
 
-Let's test our registration system. This is a complex operation that performs a lot of tasks internally, including on our backend. But it's a very important feature that you are probably not going to use often, as you'll hardly ever create new users during your development. What we want:
+Let's test our registration system as an example of E2E. This is a complex operation that performs a lot of tasks internally, including on our backend. But it's a very important feature that you are probably not going to use often, as you'll hardly ever create new users during your development. What we want:
 
 1. Open the login page.
 1. Select new user registration
@@ -39,7 +53,7 @@ Let's test our registration system. This is a complex operation that performs a 
 1. Submit
 1. Check we were registrated correctly.
 
-xxx @/../client/cypress/integration/register_test.js
+<<< @/../client/cypress/integration/register_test.js
 
 https://www.cypress.io/blog/2017/11/28/testing-vue-web-application-with-vuex-data-store-and-rest-backend/
 
@@ -47,8 +61,4 @@ https://www.cypress.io/blog/2017/11/28/testing-vue-web-application-with-vuex-dat
 
 ## Mocking
 
-https://miragejs.com/
-
-## Continuous integration
-
-There are
+[Mirage](https://miragejs.com/) and [Nock](https://github.com/nock/nock) are packages that allow you to easily mock calls

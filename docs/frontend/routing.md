@@ -4,7 +4,13 @@ Our SPA requires routing to change pages. Routing is something ordinary, but we'
 
 ## Web routing with vue-router
 
-There's not much different than a basic router configuration. We add a behavior to ensure that scroll is maintained when we navigate back and forward, and we also update the document title to match the page name. Notic
+Vue-router is the standard router for vue. Let's install it.
+
+```shell
+yarn add vue-router
+```
+
+We're not doing anything unusual in our router. We add a behavior to ensure that scroll is maintained when we navigate back and forward, and we also update the document title to match the page name.
 
 ```js
 import Vue from "vue";
@@ -15,53 +21,53 @@ import * as viewsWeb from "./views/web/";
 Vue.use(Router);
 
 const router = new Router({
-    mode: "history",
-    routes: [
-        {
-            path: "/",
-            name: "Main",
-            component: viewsWeb.Main,
-        },
-        // add all your routes here.
-    ],
+  mode: "history",
+  routes: [
+    {
+      path: "/",
+      name: "Main",
+      component: viewsWeb.Main,
+    },
+    // add all your routes here.
+  ],
 
-    scrollBehavior(to, from, savedPosition) {
-        if (savedPosition) {
-            return savedPosition;
-        } else if (to.hash) {
-            return { selector: to.hash };
-        } else {
-            return { x: 0, y: 0 };
-        }
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else if (to.hash) {
+      return { selector: to.hash };
+    } else {
+      return { x: 0, y: 0 };
     }
+  },
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.name) {
-        document.title = to.name + ' - My Site';
-    } else {
-        document.title = 'My Site';
-    }
-    next();
+  if (to.name) {
+    document.title = to.name + " - My Site";
+  } else {
+    document.title = "My Site";
+  }
+  next();
 });
 
-export default router; 
+export default router;
 ```
 
-In the [authentication chapter](./authentication.md#routing-and-authenticated-pages) we'll extend this code to ensure that pages that require authentication are blocked to unauthenticated users. 
+In the [authentication chapter](./authentication.md#routing-and-authenticated-pages) we'll extend this code to ensure that pages that require authentication are blocked to unauthenticated users.
 
 The router must be passed to the application when it is initialized, in main.js.
 
 ```js
 import router from "./router";
 
-// ... 
+// ...
 new Vue({
-    store,
-    router,
-    render(h) {
-        return h(App);
-    },
+  store,
+  router,
+  render(h) {
+    return h(App);
+  },
 }).$mount("#app");
 ```
 
@@ -73,9 +79,9 @@ In this case we'll have a single Frame to navigate, but more complex application
 [this](https://nativescript.org/blog/getting-your-route-on-with-nativescript-vue-episode-one/) and
 [this](https://nativescript.org/blog/getting-your-route-on-with-nativescript-vue-episode-two/), talk more about NSVue routing.
 
+TODO
 
 ## Unified internal navigation
-
 
 Native navigation is usuallya bit easier than the web. This is because apps tend to have more control about what can be done. While in websites you can navigate to the home page multiple times, having several copies of it in the history, in apps we usually don't allow that. If you go back to home it's because you collapsed the history stack, not because you added it on top of the stack.
 
@@ -90,7 +96,7 @@ You can also navigate with JS, which is the only way to do it on the Native vers
 TODO
 
 ```js
-this.navigate(Home, '/home');
+this.navigate(Home, "/home");
 ```
 
 ### Resetting the stack on mobile
@@ -102,7 +108,11 @@ TODO
 One advantage of manual routing is that you can navigate to pages that are not added to the stack, so when you navigate away from it they disappear:
 
 ```js
-this.navigate(PostEdit, '/post/edit', { backstackVisible: false });
+this.navigate(PostEdit, "/post/edit", { backstackVisible: false });
 ```
 
 This is perfect when you go through a form page. Once the item is created and the user navigates to its page, the form page is not in the stack, so if he navigates back he'll go straight to the previous page he was.
+
+## Bundles
+
+TODO

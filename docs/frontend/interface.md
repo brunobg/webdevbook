@@ -8,16 +8,16 @@ After setup the scaffolding you are ready to start building the app. Let's add s
 <template web>
   <div class="w-page">
     <div class="w-container">
-      <img src="~/assets/logo.png" alt="logo" height="20%" width="20%">
-      <HelloWorld :msg="msg"/>
+      <img src="~/assets/logo.png" alt="logo" height="20%" width="20%" />
+      <HelloWorld :msg="msg" />
     </div>
   </div>
 </template>
 <template native>
   <Page>
-    <ActionBar :title="navbarTitle"/>
+    <ActionBar :title="navbarTitle" />
     <GridLayout rows="auto, auto">
-      <HelloWorld :msg="msg"/>
+      <HelloWorld :msg="msg" />
     </GridLayout>
   </Page>
 </template>
@@ -52,9 +52,9 @@ So let's create it:
     <StackLayout ~drawerContent backgroundColor="#ffffff">
       <slot name="drawerContent"></slot>
     </StackLayout>
-    <Frame ~mainContent ref="drawerMainContent">
+    <frame ~mainContent ref="drawerMainContent">
       <slot name="mainContent"></slot>
-    </Frame>
+    </frame>
   </RadSideDrawer>
 </template>
 ```
@@ -64,33 +64,35 @@ since we have to handle routing and the special structure of each version, so in
 separate scripts. We only import what we need and move on:
 
 ```html
-
 <script native>
-import { SlideInOnTopTransition, RadSideDrawer } from "nativescript-ui-sidedrawer";
+  import {
+    SlideInOnTopTransition,
+    RadSideDrawer,
+  } from "nativescript-ui-sidedrawer";
 
-export default {
-  name: "App",
-  components: {
-    RadSideDrawer
-  },
-  data() {
-    return {
-      transition: new SlideInOnTopTransition(),
-    };
-  },
-};
+  export default {
+    name: "App",
+    components: {
+      RadSideDrawer,
+    },
+    data() {
+      return {
+        transition: new SlideInOnTopTransition(),
+      };
+    },
+  };
 </script>
 <script web>
-import SiteHeader from "components/web/SiteHeader";
-import SiteFooter from "components/web/SiteFooter";
+  import SiteHeader from "components/web/SiteHeader";
+  import SiteFooter from "components/web/SiteFooter";
 
-export default {
-  name: "App",
-  components: {
-    SiteHeader,
-    SiteFooter,
-  },
-};
+  export default {
+    name: "App",
+    components: {
+      SiteHeader,
+      SiteFooter,
+    },
+  };
 </script>
 ```
 
@@ -101,11 +103,11 @@ specific page. Let's see the main XML for this:
 <template lang="html">
   <GridLayout rows="auto, *" class="nt-drawer__content">
     <StackLayout row="0" class="nt-drawer__header">
-      <Image
+      <image
         class="nt-drawer__header-image fas t-36"
         src.decode="font://&#xf2bd;"
-      ></Image>
-      <Label class="nt-drawer__header-brand" :text="userName"></Label>
+      ></image>
+      <label class="nt-drawer__header-brand" :text="userName"></label>
     </StackLayout>
 
     <ScrollView row="1" class="nt-drawer__body">
@@ -118,8 +120,8 @@ specific page. Let's see the main XML for this:
           "
           @tap="onNavigationItemTap(Home)"
         >
-          <Label col="0" text.decode="&#xf015;" class="nt-icon fas"></Label>
-          <Label col="1" :text="Home" class="p-r-10"></Label>
+          <label col="0" text.decode="&#xf015;" class="nt-icon fas"></label>
+          <label col="1" :text="Home" class="p-r-10"></label>
         </GridLayout>
 
         <GridLayout
@@ -130,8 +132,8 @@ specific page. Let's see the main XML for this:
           "
           @tap="onNavigationItemTap(Posts)"
         >
-          <Label col="0" text.decode="&#xf002;" class="nt-icon fas"></Label>
-          <Label col="1" :text="Posts" class="p-r-10"></Label>
+          <label col="0" text.decode="&#xf002;" class="nt-icon fas"></label>
+          <label col="1" :text="Posts" class="p-r-10"></label>
         </GridLayout>
 
         <StackLayout class="hr"></StackLayout>
@@ -143,8 +145,8 @@ specific page. Let's see the main XML for this:
           "
           @tap="onNavigationItemTap('logout')"
         >
-          <Label col="0" text.decode="&#xf013;" class="nt-icon fas"></Label>
-          <Label col="1" :text="Logout" class="p-r-10"></Label>
+          <label col="0" text.decode="&#xf013;" class="nt-icon fas"></label>
+          <label col="1" :text="Logout" class="p-r-10"></label>
         </GridLayout>
 
         <GridLayout
@@ -155,8 +157,8 @@ specific page. Let's see the main XML for this:
           "
           @tap="onNavigationItemTap(Settings)"
         >
-          <Label col="0" text.decode="&#xf013;" class="nt-icon fas"></Label>
-          <Label col="1" :text="Settings" class="p-r-10"></Label>
+          <label col="0" text.decode="&#xf013;" class="nt-icon fas"></label>
+          <label col="1" :text="Settings" class="p-r-10"></label>
         </GridLayout>
       </StackLayout>
     </ScrollView>
@@ -169,7 +171,7 @@ development we have a few layout classes. They are not nice, and often do even l
 there's
 [half a dozen of them](https://nativescript-vue.org/en/docs/elements/layouts/absolute-layout/) to get
 used to. In this case we have a base grid with a logo, our username, and a stack with links and icons. This code
-[follows the drawer navigation template](https://market.nativescript.org/plugins/tns-template-drawer-navigation-vue) 
+[follows the drawer navigation template](https://market.nativescript.org/plugins/tns-template-drawer-navigation-vue)
 from NS docs, so you can get more information about it there. The routing code is missing; we'll get to it soon.
 Our app base is ready to go.
 
@@ -199,7 +201,7 @@ There's an important point to pay attention here. In many tutorials you'll see t
 `<style></style>` code in the SFC Vue files importing SCSS. This works but results in a huge
 bloat, because it imports the files again and again, copying them. The only safe files to import in the style
 tag are pure variable files. I tend to avoid adding code to the SFC style files, unless it's something small and
-simple. 
+simple.
 
 ```shell
 $ yarn add --dev node-sass sass-loader
@@ -235,8 +237,7 @@ $fieldBackgroundColor: $color-primary-4;
 $fieldInvalidBackgroundColor: #7e2933;
 $gridSize: 940px;
 $mobile: 540px;
-$family-sans-serif: "Arimo",
-"sans-serif";
+$family-sans-serif: "Arimo", "sans-serif";
 
 /*
  * External deps
@@ -254,7 +255,6 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts/";
 
 Note how we handle fonts here. We're going to self host them instead of loading them from CDN to show how to do it -- but you could load from CDN instead if you prefer. The [typefaces npm package](https://github.com/KyleAMathews/typefaces) allows us to download the Arimo font (or other open source fonts you want). We also include the FontAwesome fonts; we set `$fa-font-path` to correctly build them. Since we're using Vue, we also include Buefy as a helper. Below this initial include we add our internal @imports for our own SCSS code.
 
-
 ### Header and footer
 
 For our web version, let's create a standard header and footer for the site, and a landing page.
@@ -262,7 +262,6 @@ For our web version, let's create a standard header and footer for the site, and
 [OpenGraph data](https://ogp.me/), to it.
 
 Let's create `src/components/web/SiteHeader.vue` and `src/components/web/SiteFooter.vue`. This follows your usual HTML code, there's not much to say. In the next section we'll talk about routing and talk a bit about the header and footer again, explaining how to do its links.
-
 
 ## Native layout
 
@@ -293,20 +292,19 @@ system will find the assets and load them into the packages.
 ```scss
 // Font icon class
 .fab {
-    font-family: "Font Awesome 5 Brands", "fa-brands-400";
-    font-weight: 400;
+  font-family: "Font Awesome 5 Brands", "fa-brands-400";
+  font-weight: 400;
 }
 
 .fas {
-    font-family: "Font Awesome 5 Free", "fa-solid-900";
-    font-weight: 900;
+  font-family: "Font Awesome 5 Free", "fa-solid-900";
+  font-weight: 900;
 }
 
 .far {
-    font-family: "Font Awesome 5 Free", "fa-regular-400";
-    font-weight: 400;
+  font-family: "Font Awesome 5 Free", "fa-regular-400";
+  font-weight: 400;
 }
 ```
 
 This concludes our overview of how to style and build the base interface of our application.
-

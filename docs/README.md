@@ -1,10 +1,10 @@
-# Web and Native App Development 
+# A full stack approach to integrated web and native app development
 
 ## Creating native and web apps using Vue, NativeScript and Laravel
 
 ### By Bruno Barberi Gnecco
 
-This book details how to setup a full web/native application following modern (2020) practices, with a Single Page Application (SPA) frontend and a native application on mobile devices programmed in Javascript. This is of course not the only possible way to do it, and not even the most cutting edge way. But it's a good general guideline that works well, is simple and uses current but established tools. The book is divided in two parts, the frontend and backend. They are completely independent and can be read in separate. 
+This book details how to setup a full web/native application following modern (2020) practices, with a Single Page Application (SPA) frontend and a native application on mobile devices programmed in Javascript. This is of course not the only possible way to do it, and not even the most cutting edge way. But it's a good general guideline that works well, is simple and uses current but established tools. The book is divided in two parts, the frontend and backend. They are completely independent and can be read in separate.
 
 This book is not a step-by-step tutorial for new programmers. You should know JS or PHP already, and have some idea of what is a SPA. This book is about how to architect an application and have a code that works, and how to solve a few common problems that are present in most current web/native applications. If you are upgrading your skills or coming from other areas of development, or perhaps want to get used to Vue or Laravel, this book is for you. It goes through all the gotchas that someone implementing a real life project will face, so hopefully it will avoid you many hours of reading StackOverflow, unresolved issues on Github and forums in foreign languages that apparently are the only place in the web that has the exact error message you are getting.
 

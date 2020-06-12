@@ -6,12 +6,14 @@ module.exports = {
       '/',
       {
         title: 'Frontend',
-        collapsable: false, 
+        collapsable: true,
+        sidebarDepth: 2,
         children: [
           '/frontend/introduction',
           '/frontend/interface',
-          '/frontend/routing',
           '/frontend/debug',
+          '/frontend/deployment',
+          '/frontend/routing',
           '/frontend/stateandstorage',
           '/frontend/authentication',
           '/frontend/communication',
@@ -22,11 +24,12 @@ module.exports = {
           '/frontend/camera',
           '/frontend/sharing',
           '/frontend/caching',
-        ]   
+        ]
       },
       {
         title: 'Backend',
-        collapsable: false, 
+        collapsable: true,
+        sidebarDepth: 2,
         children: [
           '/backend/introduction',
           '/backend/security',
@@ -37,7 +40,8 @@ module.exports = {
           '/backend/authentication',
           '/backend/models',
           '/backend/controllers',
-        ]   
+          '/frontend/pushcommunication',
+        ]
       }
     ]
   },

@@ -26,39 +26,69 @@ function headers() {
 }
 ```
 
+If you are using `axios` you can setup the authentication as a default option:
+
+```js
+// Default config options
+const defaultOptions = {
+  baseURL: process.env.VUE_APP_BASE_URL,
+  headers: {
+    Accept: "application/json",
+  },
+  credentials: "include",
+  mode: "cors",
+};
+
+let axiosInstance = axios.create(defaultOptions);
+
+// Set token for any request
+axiosInstance.interceptors.request.use(function (config) {
+  const token = vue.$store.state.user.token.access_token;
+  config.headers.Authorization = token ? `Bearer ${token}` : "";
+  return config;
+});
+
+// ...
+axiosInstance.get("...");
+```
+
 ## To Vuex or not Vuex
 
 There's a pattern to fetch data directly in Vuex, as one of its actions. The basic structure is this:
 
 ```js
 const store = new Vuex.Store({
-  state: {
-    user: []
-  },
-  mutations: {
-    FETCH_USER(state, user) {
-      state.user = user;
+  modules: {
+    user: {
+      state: {
+        user: {}
+      },
+      mutations: {
+        FETCH_USER(state, user) {
+          state.user = user;
+        }
+      },
+      actions: {
+        fetchUser({ commit }) {
+          return axios("https://example.com/rest/me")
+            .then((response) => {
+                commit("FETCH_USER", response.data);
+            });
+          });
+      }
     }
-  },
-  actions: {
-    fetchUser({ commit }) {
-      return axios("https://example.com/rest/me")
-        .then((response) => {
-            commit("FETCH_USER", response.data);
-        });
-      });
-    }
-};
+  }
+});
 ```
 
 And you call it like this:
 
 ```js
 this.$store.dispatch("fetchUser").then(() => {
-  // data is available
+  // data is available on vuex
 });
 ```
 
 This avoids an independent fetch/commit in your code, and makes Vuex handle all the communication. You could even route it through you communication class instead of directly making the request in Vuex.
 
-## Sending images
+## Sending images and other binary data
