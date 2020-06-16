@@ -1,7 +1,0 @@
-# Database
-
-## Database
-
-## Seeding
-
-## Factories
