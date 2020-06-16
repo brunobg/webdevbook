@@ -1,5 +1,6 @@
 module.exports = {
-  title: "Full stack Web and Native Development",
+  base: "/webdevbook/",
+  title: "A full stack approach to integrated web and native app development",
   description: "Creating native and web apps using Vue, NativeScript and Laravel",
   themeConfig: {
     sidebar: [
