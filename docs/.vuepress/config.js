@@ -33,15 +33,15 @@ module.exports = {
         sidebarDepth: 2,
         children: [
           '/backend/introduction',
-          '/backend/security',
-          '/backend/media',
-          '/backend/deployment',
-          '/backend/testing',
           '/backend/database',
-          '/backend/authentication',
+          '/backend/testing',
           '/backend/models',
           '/backend/controllers',
-          '/frontend/pushcommunication',
+          '/backend/authentication',
+          '/backend/security',
+          '/backend/deployment',
+          '/backend/media',
+          '/backend/pushcommunication',
         ]
       }
     ]
