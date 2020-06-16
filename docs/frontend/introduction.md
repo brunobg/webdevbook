@@ -1,8 +1,10 @@
 # Introduction
 
-So you want to build the frontend for a native and web application. You don't want to implement three different versions in three different languages. You also think that going to a HTML wrapper like Cordova is too slow for what you are trying to achieve. This book will explain one way to implement the entire frontend in JS, using native bindings.
+So you want to build the frontend for a native and web application. You don't want to implement three different versions in three different languages, for Web, Android and iOS. You also think that going to a HTML wrapper like [Cordova](https://cordova.apache.org/) is too slow for what you are trying to achieve (is it really?). This book will explain one way to implement the entire frontend in JS, using HTML5 for web and native bindings for native.
 
-We assume that you have some familiarity with Javascript and [VueJS](https://vuejs.org). You might not have ever seen [NativeScript](https://nativescript.org/) (TNS), which is an open source framework for building truly native mobile apps with Angular, Vue.js, TypeScript, or JavaScript, which compiles to iOS or Android applications. We are adopting it because [it provides integration with VueJS](https://nativescript-vue.org/) and we can share most of our code between Web and Native versions of the application, changing only the interface code. This solves a major problem of keeping web, ios and Android versions of the same application, which is maintaining three different code bases. With this approach we maintain a single code base, with two different view templates, HTML and NS. It becomes closer to maintaining a responsive application. This is not a tutorial of TNS, however; see its site for that. The frontend part of this book is about how to structure your code and how to solve the most common problems that we often face.
+We assume that you have some familiarity with Javascript and [VueJS](https://vuejs.org). You might not have ever seen [NativeScript](https://nativescript.org/) (TNS), which is an open source framework for building truly native mobile apps with Angular, Vue.js, TypeScript, or JavaScript, which compiles to iOS or Android applications; it's fine, we'll be a little more detailed about it and you can read its documentation for any details you need. We are adopting it because [it provides integration with VueJS](https://nativescript-vue.org/) and we can share most of our code between Web and Native versions of the application, changing only the interface code. This solves a major problem of keeping web, iOS and Android versions of the same application and avoid maintaining three different code bases. With this approach we maintain a single code base, with two different view templates, HTML and TNS. It becomes closer to maintaining a web responsive application.
+
+The frontend part of this book is about how to structure your code and how to solve the most common problems that we often face.
 
 ## Setup your computer
 
@@ -17,12 +19,14 @@ We'll use `yarn` on this book, but of course `npm` would work just as well.
 We will not follow the scaffolding from [the nativescript getting started guide](https://nativescript-vue.org/en/docs/getting-started/quick-start/). The reason is that it doesn't play well with the usual vue-cli setup to build the web version. Instead we follow [its other setup](https://nativescript-vue.org/en/docs/getting-started/code-sharing/) which is based on vue-cli and should be more familiar to most people. Let's create our application:
 
 ```shell
+# we need vue-cli
 $ yarn global add @vue/cli
-$ yarn global add nativescript
 
+# create the scaffolding
 $ vue create our-client
-# You should add babel and webpack when asked.
+# You should add babel and webpack when asked
 
+# install nativescript
 $ cd our-client
 $ vue add vue-cli-plugin-nativescript-vue
 ```
@@ -37,7 +41,7 @@ Some questions will be asked. Fill with your correct app identifier. Prefer the 
 ? What type of template do you want to start with? (Default: Simple) Simple
 ```
 
-At this point you should have the basic stuff to get started. Get a coffee while things are downloaded and compiled. Then you can run thinks:
+At this point you should have the basic stuff to get started. Get a coffee while things are downloaded and compiled. Then you can run this:
 
 ```
 # now you can serve the web application

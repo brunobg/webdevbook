@@ -181,6 +181,31 @@ const store = new Vuex.Store({
 
 The advantage of this solution is that storage is centralized and any changes are automatically sent to the server, which makes it interesting for applications that need constant synchrony between client and server data.
 
+Alternatively you can split the vuex and websocket codes in different files by dispatching. On your socket code you route the event:
+
+```js
+this.socket.on(SocketEvents.SOME_EVENT, (data) => {
+  store.dispatch(SocketEvents.SOME_EVENT, data);
+});
+```
+
+and you provide actions in the store to get it:
+
+```js
+{
+  actions: {
+    [SocketEvents.SOME_EVENT] ({ commit }, data) {
+      commit(SocketEvents.SOME_EVENT, data);
+    }
+  },
+  mutations: {
+    [SocketEvents.SOME_EVENT] (state, data) {
+      // do somethng here on state with data.
+    }
+  }
+}
+```
+
 ### Handle code on a single component
 
 This approach works well only for small applications that have a main entry point that handles most of what is happening. For example, let's write a very basic standalone chat widget for websites. It's `App.vue` would be something like this:
