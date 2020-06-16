@@ -1,8 +1,17 @@
-# A full stack approach to integrated web and native app development
-
-## Creating native and web apps using Vue, NativeScript and Laravel
-
-### By Bruno Barberi Gnecco
+---
+home: true
+heroText: A full stack approach to integrated web and native app development
+tagline: Creating native and web apps using Vue, NativeScript and Laravel
+actionText: Read the book →
+actionLink: ./frontend/introduction.md
+features:
+  - title: VueJS Frontend
+    details: Use the VueJS framework to build your frontend
+  - title: Nativescript
+    details: Generate native mobile applications sharing code with the web version
+  - title: Laravel backend
+    details: A standard PHP backend
+---
 
 This book details how to setup a full web/native application following modern (2020) practices, with a Single Page Application (SPA) frontend and a native application on mobile devices programmed in Javascript. This is of course not the only possible way to do it, and not even the most cutting edge way. But it's a good general guideline that works well, is simple and uses current but established tools. The book is divided in two parts, the frontend and backend. They are completely independent and can be read in separate.
 
@@ -10,7 +19,7 @@ This book is not a step-by-step tutorial for new programmers. You should know JS
 
 On the other hand, this book goes through the almost the entire stack of development tools used these days: frontend, backend, style sheet languages, databases, bundlers, deployment, unit testing, end to end testing, continuous integration, continuous delivery -- we only skip virtualization tools. This provides good foundation for a full stack developer -- if you read both parts.
 
-Last, but not least, the base code from this book is available on the [frontend]() and [backend]() repositories. This should be useful for experienced developers as well as a quick scaffolding for apps, so you can be up and running with a web/native application and backend in very little time, and with working solutions for boring things like authentication or internalization.
+Last, but not least, the base code from this book is available on the [frontend](./frontend/introduction.md) and [backend](./backend/introduction.md) repositories. This should be useful for experienced developers as well as a quick scaffolding for apps, so you can be up and running with a web/native application and backend in very little time, and with working solutions for boring things like authentication or internalization.
 
 There are billions (ok, perhaps only millions) of languages, frameworks, databases and protocols these days. We use [Vue](https://vuejs.org) with [Nativescript](https://nativescript.org/) for the frontend through the [Nativescript/Vue integration]https://nativescript-vue.org/). This book is not a tutorial of how VueJS works. There are plenty of tutorials about that already. If you never used Vue, please take a look at it first. We'll explain how to use it to implement an application, but not how it works per se.
 
