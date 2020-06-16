@@ -60,7 +60,7 @@ login() {
 
 The actual rest call is here:
 
-<<< @/../client/src/modules/rest.js#login-local
+<x<x< @ /../client/src/modules/rest.js#login-local
 
 ## OAuth
 
@@ -76,7 +76,7 @@ Remember to fill `VUE_APP_OAUTH_CLIENT_ID` (usually 2), and you can `VUE_APP_OAU
 
 Let's use [vue-social-auth](https://github.com/diadal/vue-social-auth), as it handles Vue and [Socialite](https://socialiteproviders.netlify.app/) in the backend. `main.js` includes it:
 
-<<< @/../client/src/main.js#oauth
+<x<x< @ /../client/src/main.js#oauth
 
 All the OAuth code goes to `components/LoginExternal.vue`. The main flow is simple to follow:
 

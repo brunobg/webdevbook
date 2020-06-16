@@ -53,7 +53,7 @@ Let's test our registration system as an example of E2E. This is a complex opera
 1. Submit
 1. Check we were registrated correctly.
 
-<<< @/../client/cypress/integration/register_test.js
+<x<x< @/../client/cypress/integration/register_test.js
 
 https://www.cypress.io/blog/2017/11/28/testing-vue-web-application-with-vuex-data-store-and-rest-backend/
 

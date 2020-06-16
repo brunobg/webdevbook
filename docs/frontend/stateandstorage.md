@@ -26,7 +26,7 @@ The `store` files only differ because the permanent storage methods are differen
 
 The web version looks like this, using [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate) to save data in local storage.
 
-<<< @/../client/src/store.js
+<x<x< @ /../client/src/store.js
 
 Notice that we are using too arguments for the persisted state:
 
@@ -35,7 +35,7 @@ Notice that we are using too arguments for the persisted state:
 
 The native version is similar, but using another plugin for storage:
 
-<<< @/../client/src/store.native.js
+<x<x< @ /../client/src/store.native.js
 
 ## Store format
 
@@ -43,7 +43,7 @@ So at this point we have Vuex running. Let's create its actual data in `storedat
 
 At this point we have only one module, the user. Let's create its data structure and add mutations to update it, update the token and logout.
 
-<<< @/../client/src/storedata.js
+<x<x< @ /../client/src/storedata.js
 
 We also provide a simple getter, `isLogged()`. Any state from the user will be in this store.
 
