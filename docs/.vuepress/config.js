@@ -1,5 +1,5 @@
 module.exports = {
-  title: "Web and Native Development",
+  title: "Full stack Web and Native Development",
   description: "Creating native and web apps using Vue, NativeScript and Laravel",
   themeConfig: {
     sidebar: [
