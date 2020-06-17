@@ -10,22 +10,22 @@ Ideally the building and deployment will be handled by your CI/CD tool.
 
 ## Setup
 
-Uglifying makes your code more difficult to alter, smaller and sometimes even faster. The [terser plugin](https://github.com/webpack-contrib/terser-webpack-plugin) is part of the build system.
+Uglifying makes your code more difficult to alter, smaller and sometimes even faster. The [terser plugin](https://github.com/webpack-contrib/terser-webpack-plugin) is already part of the build system.
 
-There are a number of things to configure in your first build, such as the [app name, launch screen and icons](https://docs.nativescript.org/tooling/publishing/publishing-android-apps). Nativescript provides documentation to do all of this.
+There are a number of things to configure before your first build for native environments, such as the [app name, launch screen and icons](https://docs.nativescript.org/tooling/publishing/publishing-android-apps). Nativescript provides documentation to do all of this.
 
 ## Building
 
 ### Web build
 
-We need to build the application.
+We need to build the application. Remember to set your `.env.local` and `.env.production.*` files with the correct data for your production environment.
 
 ```shell
 $ yarn version --patch  # you can use this command to bump version
 $ yarn build:web # build it
 ```
 
-The result will be in the `dist` dir. Deployment varies wildly according to your hosting and server, but you essentially need to copy the `dist` dir to the public directory of your webserver.
+The result will be in the `dist` dir. Deployment varies wildly according to your hosting and server, but you essentially need to copy the `dist` dir to the public directory of your webserver. There's [a guide at the vue-cli docs](https://cli.vuejs.org/guide/deployment.html) about deployment in several platforms.
 
 ### Remote native builds with CI
 
@@ -35,7 +35,7 @@ TODO
 
 https://github.com/NativeScript/nativescript-remote-builds/blob/master/docs/CIRCLECI.md
 
-### Local Android
+### Local native Android build
 
 If you prefer to generate the Android release locally or on your build server, you also can. To generate the APK:
 
@@ -59,7 +59,7 @@ Remember that you can only build for iOS on an Apple computer.
 yarn run build:ios
 ```
 
-https://docs.nativescript.org/tooling/publishing/publishing-ios-apps
+TODO https://docs.nativescript.org/tooling/publishing/publishing-ios-apps
 
 ## OpenGraph tags and SPA
 

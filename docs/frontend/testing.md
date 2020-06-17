@@ -14,13 +14,35 @@ Unit tests of the frontend can check that the implementation is doing what is ex
 A unit test can quickly become a feature test -- and whether that is right or wrong depends on who you're talking to. Unit tests should be about single units of code, ensuring they are working as expected. Often bugs happen when you integrate code; two pieces of code which are correctly working in separate have a bug when called together. Feature tests catch those bugs. On the frontend simulating a browser for feature tests can quickly become hard to manage, so perhaps an E2E test might be more appropriate.
 :::
 
+Let's add our deps.
+
+```shell
+vue add unit-mocha
+yarn add faker
+```
+
+Add some nice script runners on `package.json`:
+
+```json
+{
+  //...
+  "scripts": {
+    "test:mocha": "......."
+  }
+}
+```
+
+Now you can run tests with:
+
 ```shell
 yarn test:mocha
 ```
 
 :::tip
-Using VSCode? Check [the mocha sidebar](https://marketplace.visualstudio.com/items?itemName=maty.vscode-mocha-sidebar)
+Using VSCode? Check [the mocha sidebar](https://marketplace.visualstudio.com/items?itemName=maty.vscode-mocha-sidebar) and run tests directly in your IDE.
 :::
+
+### Coverage
 
 ## End-to-end web tests with Cypress
 

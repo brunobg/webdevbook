@@ -2,7 +2,7 @@
 
 Coding is debugging. This section gives a few tips of tools to avoid some bugs and detect them before you run your code, as well as explains how to debug your code and things don't go as expected. Which is always.
 
-We'll also have more to say about [testing](./tests.md).
+We'll also have more to say about [testing](./tests.md). If you write tests early -- like with [TDD](https://en.wikipedia.org/wiki/Test-driven_development) you can avoid tedious manual tests and know when things break.
 
 ## Lint and Prettier
 
@@ -26,18 +26,28 @@ rules: {
 
 ## VSCode
 
-If you are going to use VSCode you can also install some extra plugins:
+If you are going to use [VSCode](https://code.visualstudio.com/) you can also install some extra plugins:
 
-- <a href="https://vuejs.github.io/vetur/">Vetur</a>
+- [Vetur](https://vuejs.github.io/vetur/)
 - [Gettext plugin](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext) to edit PO files for [i18n](./i18n.md)
 - You can [debug Vue from VSCode with a little setup](https://vuejs.org/v2/cookbook/debugging-in-vscode.html).
 - [NativeScript support](https://marketplace.visualstudio.com/items?itemName=NativeScript.nativescript)
+- [Mocha sidebar](https://marketplace.visualstudio.com/items?itemName=maty.vscode-mocha-sidebar) is very useful to run mocha tests from the IDE.
+
+VSCode can be configured by creating a `.vscode/settings.json` file. If you want to format on save you can add this:
+
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
 
 ## General tips
 
 Some helfpul tips:
 
-- [automatic tests](./testing.md) are better than manual tests. A TDD approach might be smarter and quicker.
+- again, [automatic tests](./testing.md) are better than manual tests. A TDD approach might be smarter and quicker.
 - use the [debugjs](https://github.com/visionmedia/debug) to print your debug information. It's better than console.log().
 - debugging the web version is easier than the native version running on a real device or emulator. If you are debugging shared code, test in on the web version first.
 - remember the `debugger` [statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger) if you want a quick and dirty breakpoint.
@@ -49,3 +59,5 @@ Some helfpul tips:
 The easiest way to debug a NS Android app is through Chrome. You can connect it to the application and get a console and a debugger. You can see the layout XML tree, but not change it.
 
 ### iOS
+
+TODO

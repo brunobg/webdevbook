@@ -4,7 +4,7 @@ This section is about how you fetch and send data to the backend. This is about 
 
 We'll talk about [mocking on the test chapter](./testing.md#mocking).
 
-## Authentication with a Bearer token
+## Authenticate communication with a Bearer token
 
 After the user logins a Bearer token will be stored. We'll use that to authenticate our remote calls. The same principle will also work with JWTs.
 

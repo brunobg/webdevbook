@@ -1,8 +1,8 @@
-# Camera
+# File upload and camera
 
 I don't think any HTML API changed as much as the Camera API. Of course, the native API is completely different, so once again we'll add a wrapper to homogenize things.
 
-## Web
+## Camera access from web
 
 Of course, even in the web, we have a slightly different way to handle mobile and desktop browsers again. Mobile browsers can access the camera and gallery straight from HTML. On desktop we need to show a preview with the Camera API instead.
 
@@ -69,10 +69,16 @@ export default {
 };
 ```
 
-## Nativescript
+## Camera access with Nativescript
 
 Let's use TNS camera plugin:
 
 ```shell
 tns add nativescript-camera
 ```
+
+## Drag and drop
+
+## Paste from clipboard
+
+https://developers.google.com/web/fundamentals/media/capturing-images

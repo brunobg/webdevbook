@@ -1,16 +1,16 @@
 # Authentication
 
-You'll likely need users to authenticate on your app. There are currently a few choices for telling a server who the user making a request is:
+You'll likely need users to authenticate on your app. Your server doesn't know who is making a request, so the frontend has to provide information to link the request with the user doing it. There are currently a few choices for telling a server who the user making a request is, and the most popular are:
 
-- _sessions with cookies_. You store a cookie on the browser when the user logins. Every request sends this cookie automatically. This is prone to CSRF attacks and does not play very well with native apps. These were widely used a few years ago.
-- _JWT (JSON web tokens)_. This is a standard to represent data securely between parties and verify claims. You store data about the client (such as user name and id) on a JSON structure, which is encoded and signed or encrypted. The advantage here is that you can store information, which might be interesting for microservices, as it contains verifiable data and can avoid a DB hit. JWTs have a lifetime in it, and so need to be renovated periodically. JWTs are not easy, however, to be individually revoked; you either need to check them against the DB and therefore lose one of its great advantages, or you need to provide short-lived JWTs which are renovated often. It avoids CSRF attacks since the browser does not send it automatically.
-- _a bearer token_. This is a simple string that is used for authorization, usually sent as an extra header. It's essentially a key that is looked up on a database or cache to get the user information. It avoids CSRF attacks since the browser does not send it automatically, and are easy to revoke, but require some form.
+- _sessions with cookies_. You store a cookie on the browser when the user logins. Every request sends this cookie automatically. This is prone to CSRF attacks and does not play very well with native apps, but are handled transparently by the browser and the frontend does not have to do anything to support this (other than the actual login request, of course). These were widely used a few years ago.
+- _JWT (JSON web tokens)_. This is a standard to represent data securely between parties and verify claims. You store data about the client (such as user name and id) on a JSON structure, which is encoded and signed or encrypted. The advantage here is that you can store information, which might be interesting for microservices, as it contains verifiable data and can avoid a DB or other microservice hit. JWTs have a lifetime in it, and so need to be renovated periodically. JWTs are not easy, however, to be individually revoked; you either need to check them against the DB and therefore lose one of its great advantages, or you need to provide short-lived JWTs which are renovated often. It avoids CSRF attacks since the browser does not send it automatically.
+- _a bearer token_. This is a simple string that is used for authorization, usually sent as an extra header. It's essentially a key that is looked up on a database or cache to get the user information. It avoids CSRF attacks since the browser does not send it automatically, and are easy to revoke and implement.
 
-For the frontend JWT and bearer tokens are very similar, since in both cases you send them as part of your requests. We'll show how to implement a bearer token authorization for this app, both with local logins and with 3rd party OAuth logins.
+For the frontend JWT and bearer tokens are very similar, since in both cases you send them as part of your requests. We'll show how to implement a bearer token authorization sent through headers for this app, both with local logins and with 3rd party OAuth logins.
 
 ### Designing a good login/sign up form
 
-Avoid too many fields in your sign up form. Ideally your application will require only email and password (or the OAuth login). Are you sure you need a unique username? If you do, add that. Every extra field you add makes people more prone to give it up because there's too much to fill.
+Avoid too many fields in your sign up form. Ideally your application will require only email and password (or the OAuth login). Are you sure you need a unique username? If you do, add that. Every extra field you add makes people more prone to give it up because there's too much to fill. Supporting OAuth is interesting because users can sign up with a single click, reducing friction to a minimum.
 
 Remember that social logins often have branding guidelines, like [Google](https://developers.google.com/identity/branding-guidelines). Follow them when implementing your buttons.
 
@@ -22,11 +22,11 @@ A local login does not validate against a third party; you use an email or uniqu
 
 Our registration flow is like this.
 
-1. validate user data on the client and show any errors
-1. request user registration on the server. User is created on the server, check for errors
+1. validate user data on the client and show any errors if they exist.
+1. request user registration on the server. User is created on the server, check for errors. Return a token.
 1. perform the login flow on the server.
 
-By separating in two steps, one for registration and another for login, we ensure that any changes to the login procedure (such as processing user data to do something on the app) are performed exactly the same on the registration and avoid maintaining two paths.
+By separating in two steps, one for registration and another for login, we ensure that any changes to the login procedure (such as processing user data to do something on the app) are performed exactly the same on the registration and avoid maintaining two paths that end with a login.
 
 TODO
 
@@ -39,22 +39,26 @@ Our login will work like this:
 1. [store user data](./stateandstorage.md)
 1. navigate to the home page or the user page. If your login is in a modal, you can refresh the page instead by emitting an event.
 
+If you handle the login directly on the `Login` component, your code should look like this:
+
 ```js
 login() {
-    this.processing = true;
-    this.rest()
-        .login(this.user.email, this.user.password)
-        .then(() => {
-            return this.rest().userMe();
-        })
-        .then((data) => {
-            this.processing = false;
-            this.$store.commit("updateUser", data);
-            this.navigate(Home, "/home", {clearHistory: true});
-        })
-        .catch((error) => {
-            this.processing = false;
-        });
+  this.processing = true;
+  this.rest()
+    .login(this.user.email, this.user.password)
+    .then(() => {
+      // login happened. Get the user data.
+      return this.rest().userMe();
+    })
+    .then((data) => {
+      // store the user data and navigate to home.
+      this.processing = false;
+      this.$store.commit("updateUser", data);
+      this.navigate(Home, "/home", {clearHistory: true});
+    })
+    .catch((error) => {
+      this.processing = false;
+    });
 }
 ```
 
@@ -70,7 +74,9 @@ OAuth requires integration from the backend and frontend. If you are using a dif
 
 You don't need to understand much of the OAuth protocol to use it, but [here's a detailed introduction to OAuth 2.0](https://oauth.net/getting-started/) if you are curious.
 
-Remember to fill `VUE_APP_OAUTH_CLIENT_ID` (usually 2), and you can `VUE_APP_OAUTH_CLIENT_SECRET` [from your server](../backend/authentication.md#setup) on your `.env.local` file. In this example we'll use Google for our authentication. We get our Google id from `process.env.VUE_APP_OAUTH_GOOGLE_CLIENT_ID` in our `.env.local` file. Get one from [Google](https://console.developers.google.com/).
+Since we'll use the backend OAuth system, we need some data from it. Remember to fill `VUE_APP_OAUTH_CLIENT_ID` (usually 2), and you can `VUE_APP_OAUTH_CLIENT_SECRET` [from your server](../backend/authentication.md#setup) on your `.env.local` file.
+
+In this example we'll use Google for our authentication. We get our Google id from `process.env.VUE_APP_OAUTH_GOOGLE_CLIENT_ID` in our `.env.local` file. Get your [Google id here](https://console.developers.google.com/).
 
 ### Web
 
@@ -103,22 +109,26 @@ AuthProvider(provider) {
 
 `registerSocial()` validates on the backend, which creates the user if necessary. It gets user data and token, storing on Vuex. This is all we need on the frontend.
 
+TODO save userme
+
 ### Nativescript
 
 TODO
 `nativescript-oauth`
 
-### Asking the user for more data
+### OAuth and extra data fields
+
+External logins with OAuth let you ask for user information. The most common fields, like email and name are available with several providers. It's just a matter of setting the scope of what you need.
 
 Occasionally you need more data from the user than the OAuth provider returns to complete the registration. For example, you might need their physical address or a choice of account type. On a regular registration with local login you just add all the fields to the registration form, but with OAuth you don't have this possibility.
 
 You can handle it with this flow:
 
-1. make the authentication with the provider
-1. call the backend with the OAuth data. Create the user on the backend with empty data for the extra fields.
-1. open a modal dialog with the form for the extra data you need.
-1. send the extra data as an update to the backend.
-1. finish the login flow on the frontend.
+1. Make the OAuth authentication with the provider.
+1. Call the backend with the OAuth data, as in the regular OAuth flow. If the user does not exist, create the user on the backend with empty data for the extra fields.
+1. Return to the frontend with a field detailing it's a user creation operation. Open a modal dialog with the form for the extra data you need.
+1. Send the extra data as an update to the backend.
+1. Finish the login flow on the frontend.
 
 ## Logout
 
@@ -151,17 +161,19 @@ Going [back to our router](./routing.md), we extend the data structure with a `m
 
 ```js
 const router = new Router({
-    mode: "history",
-    routes: [
-        {
-            path: "/",
-            name: "Main",
-            component: viewsWeb.Main,
-            meta: {
-                unauthorized: true
-            }
-        },
-//...
+  mode: "history",
+  routes: [
+    {
+      path: "/",
+      name: "Main",
+      component: viewsWeb.Main,
+      meta: {
+        unauthorized: true,
+      },
+    },
+    //... other routes
+  ],
+});
 ```
 
 Pages that can be accessed without authentication have the `unauthorized: true` field. This is checked on each route execution on `beforeEach`:
@@ -183,6 +195,8 @@ router.beforeEach((to, from, next) => {
 
 We provide a param to the login path, enabling us to redirect the user to the chosen page after the login is performed.
 
-### Native
+### Native routing
 
-In the native version we have full control of the application and users cannot access a random page ordinarily. If your app supports [universal links](https://market.nativescript.org/plugins/nativescript-plugin-universal-links), you'll have to provide a callback function. You can check on this callback if the user needs to be authenticated and route him to a login page or the chosen page.
+In the native version we have full control of the application and users cannot access a random page ordinarily, since they should not even see the buttons or links to pages that require authentication. If you prefer to show the links to entice the user to login, you can share the router data to check if an authorization is required (or, if your app is small, just check it manually on the element click callback).
+
+If your app supports [universal links](https://market.nativescript.org/plugins/nativescript-plugin-universal-links), you'll have to provide a callback function. You can check on this callback if the user needs to be authenticated and route him to a login page or the chosen page.
