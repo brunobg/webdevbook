@@ -29,6 +29,6 @@ There are billions (ok, perhaps only millions) of languages, frameworks, databas
 
 We use [Laravel](https://laravel.com) for the backend, but the concepts would apply to any other backend as well. Laravel is a pretty low level framework for these days, but we can see the entire backend stack with it. Again, this is not a basic Laravel introduction, so it might move a bit fast you have never developed anything in PHP before.
 
-REST might be old, but it's still widely used, simple and effective to implement in any language and framework. If you stick to REST for communication you can implement the backend/frontend of this book paired a completely different frontend/backend. You can also swap REST for GraphQL or other kind of backend access by just swapping the communication code.
+We'll setup a Graphql endpoint for the backend, though briefly talk about REST endpoints and controllers as well. Other than the details of the communication you can implement the backend/frontend of this book paired a completely different frontend/backend.
 
 ### About the author

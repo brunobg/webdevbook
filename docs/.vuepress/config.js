@@ -33,6 +33,7 @@ module.exports = {
         sidebarDepth: 2,
         children: [
           '/backend/introduction',
+          '/backend/architecture',
           '/backend/database',
           '/backend/testing',
           '/backend/models',
