@@ -9,8 +9,8 @@ features:
     details: Use the VueJS framework to build your frontend
   - title: Nativescript
     details: Generate native mobile applications sharing code with the web version
-  - title: Laravel backend
-    details: A standard PHP backend
+  - title: Laravel/GraphQL backend
+    details: A standard PHP backend with GraphQL endpoints
 ---
 
 This book is about how to architecture and implement a full web/native application following modern (2020) practices, with a Single Page Application (SPA) frontend and a native application on mobile devices written in Javascript. Both frontend and backend are covered.
