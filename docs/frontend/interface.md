@@ -175,14 +175,69 @@ used to. In this case we have a base grid with a logo, our username, and a stack
 from NS docs, so you can get more information about it there. The routing code is missing; we'll get to it soon.
 Our app base is ready to go.
 
-## Sass (and LESS) and all
+## Good practices for HTML/CSS
 
-Nativescript uses CSS for much of its layouting, but in the end things are so different in the web and native
-versions in this aspect that it's not worth trying to have a single CSS code base. We'll structure three entry
-points for our CSS, Android, iOS and web. Android and iOS will share most of the code, but this enables us to
-add individual styles too. We're
-[again following TNS structure](https://market.nativescript.org/plugins/tns-template-drawer-navigation-vue)
-and adding a new directory for web.
+If you have developed a web project before you know how HTML quickly becomes full of classes and weird tags, and starts to break unexpectedly if you change one class name. So here's a list of good practices:
+
+- don't use the same class names for style and for JS. This has been less of an issue now with reactive frameworks than in the past with pure JS or Jquery, but occasionally we still need selectors for JS code. If you do, use class names for the code structure, not for design.
+- use robust selectors. `div > div > ol > li > span` is easy to break, while `ol.numberList` or `li.numberItem > span.acronym` are much more robust.\
+- use a standard such as BEM, OOCSS, SMACSS, SUITCSS for naming. We'll talk about BEM next.
+
+### BEM
+
+The **Block, Element, Modifier** methodology (known as [BEM](http://getbem.com/)) is a popular naming convention for classes in HTML and CSS.
+
+In this convention we have:
+
+- a **block** is a top-level abstraction of a component, which is meaningful on its own. Examples: a button: `.button`, `.menu`, `.post`.
+- an **element** is a child item inside a block. These are denoted by two underscores following the name of the block. Examples: `.btn__name` or `.post__title`, `.menu__item`.
+- a **modifier** can manipulate the block or element to change appearance or behavior. These are denoted by two hyphens following the name of the block/element. Examples: `.btn--disabled` or `.post__title--big`, `.menu__item--highlighted`.
+
+Here's a quick example of a BEM structure for a fictional `post-card` element:
+
+```css
+.post-card {
+  width: 100%;
+}
+
+.post-card__title {
+  font-weight: bold;
+}
+
+.post-card__title--big {
+  font-size: 120%;
+}
+```
+
+Note that BEM styles should not be nested (though you can have a block modifier affecting its element). This makes CSS specifity flat. It allows you to have elements containing other elements easily.
+
+```html
+<div class="post-card">
+  <div class="post-card__title post-card__title--big">
+    My title
+  </div>
+</div>
+```
+
+BEM provides modularity, making it easy to share components with other projects and avoid cascading.
+
+## CSS Preprocessors
+
+A number of CSS preprocessors have been developed to make CSS development less verbose and easier. The two most used are [LESS](https://lesscss.org) and [Sass](https://sass-lang.com). Their syntax is slightly different, but both have more or less the same features. The choice is yours, and may be influenced by the CSS library that you're going to use. Bootstrap and Bulma, for example, are written in Sass, so it might be easier to adopt Sass if you want to include their original code to customize it yourself.
+
+```shell
+$ yarn add --dev node-sass sass-loader
+```
+
+Using less is just the same as using Sass, but with its own packages:
+
+```shell
+$ yarn add --dev node-less less-loader
+```
+
+### Sharing CSS between native and Web
+
+Nativescript uses CSS for much of its layouting, but in the end things are so different in the web and native versions in this aspect that it's not worth trying to have a single CSS code base, though we can share variables and some styles. We'll structure three entry points for our CSS, Android, iOS and web. Android and iOS will share most of the code, but this enables us to add individual styles too. We're [again following TNS structure](https://market.nativescript.org/plugins/tns-template-drawer-navigation-vue) and adding a new directory for web.
 
 <dl>
 <dt>src/app.ios.scss</dt>
@@ -197,21 +252,9 @@ and adding a new directory for web.
 <dd>We're placing all the web SCSS files into this directory.</dd>
 </dl>
 
-There's an important point to pay attention here. In many tutorials you'll see the
-`<style></style>` code in the SFC Vue files importing SCSS. This works but results in a huge
-bloat, because it imports the files again and again, copying them. The only safe files to import in the style
-tag are pure variable files. I tend to avoid adding code to the SFC style files, unless it's something small and
-simple.
+There's an important point to pay attention here. In many tutorials you'll see the `<style></style>` code in the SFC Vue files importing SCSS. This works but results in a huge bloat, because it imports the files again and again, copying them. The only safe files to import in the style tag are pure variable files.
 
-```shell
-$ yarn add --dev node-sass sass-loader
-```
-
-Using less is just the same as using Sass, but with its own packages:
-
-```shell
-$ yarn add --dev node-less less-loader
-```
+You can decide on how to organize your code. I tend to place styles that are shared on the entire application on the project CSS files, while small and standalone components that can be shared with other projects will have it's BEM-style code in the SFC itself.
 
 ### Bulma
 

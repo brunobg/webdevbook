@@ -32,7 +32,7 @@ So let's add these deps to our project:
 composer require corollarium/modelarium corollarium/formularium nuwave/lighthouse
 ```
 
-## Designing your data models
+## Designing your application
 
 This is arguably the most important part of your application, and certainly the one that requires most thought in its design.
 
