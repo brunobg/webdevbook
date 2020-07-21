@@ -1,36 +1,38 @@
-# Architecture and scaffolding
+# Architecture
 
-We will talk about the Laravel application code structure and backend planning in this book, but we can also save a few thousand keystrokes by using a scaffold generator from GraphQL models. Let's understand what is GraphQL and how to architect it all.
+There are several considerations when you start an application. This section will details some basic choices you have to make.
 
-TODO
-Database
-Models
-Controllers
-Policies
-Events
-Routes
+## Server-side render versus SPAs
 
-## GraphQL
+Originally the web worked in a simple way: the server sent HTML ready for the browser to render and show. There was no dynamic data transference between the browser and the server; everything was a HTML page. With Javascript appearing and XHR (ajax), it became possible to fetch data without navigating to a new page. Eventually some people started to implement the entire generation of HTML on the client, and the server only sent pure data in JSON or XML formats. So Single Page Applications were born.
 
-TODO
-What is GraphQL?
-How to describe models?
+The advantage of SPAs is to keep the entire frontend generation on the client, which becomes easier with reactive JS frameworks such as Vue or React. This way all the communication with the server is either serving static assets (JS, images, or the very basic HTML page that is used as base for loading) or serving data from the DB. It becomes possible to move all static assets to a CDN, and clients only have to load them once, making navigation faster. It also makes the backend easier to write, because you don't have to worry about HTML or rendering at all. You just write endpoints to get data. The servers need to do much less processing, therefore their load is also much lighter.
 
-## Scaffolding
+SPAs have a much longer loading phase, however. Clients need to download the base HTML, then the JS for rendering (which can be megabytes), and only when the JS is finished downloading it runs, setups what is needs and requests the actual dynamic data from the server. The data is downloaded and the JS processes it to generate HTML, which the browser renders. As a result, it's one or two orders of magnitude slower on the client than server-side rendering. If you don't take care you end up with a site that takes several seconds to load, which is not a good user experience.
 
-There's a lot of structure in a regular web application to implement all the items above. So we'll use the GraphQL Schema Definition Language (SDL) to describe your data and add functionality through server-side directives. We'll use [Modelarium](https://github.com/Corollarium/modelarium) and [Lighthouse](https://lighthouse-php.com) to get rid of most of the scaffolding and focus on the code itself.
+SPAs are attractive for another reason: there's a separation of frontend and backend into different code bases, which become completely independent. This makes it easier for teams to work on the same project and reduces the possibility of breakage, as long as you take care that the data transference follows the expected format.
 
-**Lighthouse** is a framework for serving GraphQL from Laravel.
+We are taking a SPA approach in this book. In our case we are also developing a mobile app, so it makes sense that the backend will be only one, serving the same data for web and mobile. It also makes it easier to write code for the frontend, since you only have to write the communication code once.
 
-**Modelarium** is a framework for generating code scaffolding from GraphQL SDL, creating all the files you need to focus on the logic itself. It generates Laravel code structure as well as frontend components with its companion **Formularium**.
+That doesn't mean that server-side rendering is dead. In fact we'll see that if we want to provide page previews with metadata, we'll have to some at least some server-side rendering. Most automated tools will download the HTML and not run the JS, so they only see what the server outputs. Indexers such as Google run JS these days, so they can index your site properly, but most crawlers, as well as preview fetchers from chat apps for example, don't.
 
-We'll use both extensively in this book, describing operations from the user's point of view, which is what GraphQL describes. We'll also explain what the tools are doing and generating.
+In sites that are not very interactive, SPAs might slow make them slower with little gain. If you have static data you can pre-render the HTML on the server easily -- that's how this book is generated, pre-rendered into HTML that you download.
 
-So let's add these deps to our project:
+Considering the advantages of SSR, we went full circle and started to essentially "run the frontend SPA on the server". The browser downloads a pre-rendered HTML page with data, then it runs the SPA code to make the page reactive and dynamic, which is called hydrating. Of course, this complicates things again. You need Node.js to run the frontend JS code on the server, and you increase the server load. As always, it's a trade-off.
 
-```
-composer require corollarium/modelarium corollarium/formularium nuwave/lighthouse
-```
+In this book we'll do SPA approach where we do not pre-render or SSR the page, but we fill the metadata to make previews possible. It's up to you whether to follow this approach. Laravel can use Blade templates to render content statically, which might be more fitting for your problem.
+
+## GraphQL or REST?
+
+There are currently three most popular standards that are used to transfer data between server and clients by polling: SOAP, REST and GraphQL.
+
+SOAP, Simple Object Access Protocol, is a standaard protocol originally developed by Microsoft. SOAP has a more rigid set of rules and relies on XML to transfer data. SOAP is integrated into some technologies such as DCOM and CORBA. We'll not discuss it further here.
+
+REST (Representational State Transfer) is a very popular transfer technology. The idea is that you have endpoints mapped to web routes, such as "/post/[id]". REST is lightweight and usually transfers JSON, but you can pick whatever data format it's more useful -- even more than one. HTTP provides action verbs (GET, POST, PUT and DELETE), which indicate which operation is being performed. REST is populare because it's easy to implement: you write code for the endpoint in a controller and you're running.
+
+GraphQL is a query language for APIs. It is also a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API. It is more powerful since the client can decide what information it wants. It was originally developed by Facebook and used internally, and now it's controlled by a foundation under the Linux Foundation. Nowadays it is supported by good tools and has a pleasant side-effect -- you don't need to write communication code anymore. In fact, in the approach favored by this book you don't have to write controllers. The GraphQL library does it for you, and you get basic CRUD operation for free. There's only one endpoint and there's a language to describe data, queries and mutations. GraphQL also lets you subscribe to data, therefore providing push communication as well.
+
+You can use GraphQL and REST in the same application. They are not even exactly the same thing. But GraphQL with a proper library is very easy to use, and we'll see that it has enough information to even help us to avoid not only writing controllers, but generating a lot of the code we'll need automatically.
 
 ## Designing your application
 

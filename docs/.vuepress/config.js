@@ -34,6 +34,7 @@ module.exports = {
         children: [
           '/backend/introduction',
           '/backend/architecture',
+          '/backend/structure',
           '/backend/database',
           '/backend/testing',
           '/backend/models',
