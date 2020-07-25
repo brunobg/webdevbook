@@ -32,7 +32,7 @@ REST (Representational State Transfer) is a very popular transfer technology. Th
 
 GraphQL is a query language for APIs. It is also a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API. It is more powerful since the client can decide what information it wants. It was originally developed by Facebook and used internally, and now it's controlled by a foundation under the Linux Foundation. Nowadays it is supported by good tools and has a pleasant side-effect -- you don't need to write communication code anymore. In fact, in the approach favored by this book you don't have to write controllers. The GraphQL library does it for you, and you get basic CRUD operation for free. There's only one endpoint and there's a language to describe data, queries and mutations. GraphQL also lets you subscribe to data, therefore providing push communication as well.
 
-You can use GraphQL and REST in the same application. They are not even exactly the same thing. But GraphQL with a proper library is very easy to use, and we'll see that it has enough information to even help us to avoid not only writing controllers, but generating a lot of the code we'll need automatically.
+You can use GraphQL and REST in the same application. They are not even exactly the same thing. But GraphQL with a proper library is very easy to use and makes you write way less code. We'll see that it has enough information to even help us to avoid not only writing controllers, but generating a lot of the code we'll need automatically.
 
 ## Designing your application
 
@@ -62,6 +62,6 @@ With GraphQL all the operations that generate changes to the database are called
 
 List the operations that you'll use.
 
-### Who can do those operations?
+### Who can do each of those operations?
 
 Not every operation can be done by every user. You don't want John changing Mary's profile, or Paul accessing Jane's invoices. So both queries and mutations need to be restricted with policies. For each item in your query and mutation list describe the restrictions. Do it from the start; it's better to have all endpoints blocked by default than to forget one of them.

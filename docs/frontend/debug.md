@@ -4,7 +4,7 @@ Coding is debugging. This section gives a few tips of tools to avoid some bugs a
 
 We'll also have more to say about [testing](./tests.md). If you write tests early -- like with [TDD](https://en.wikipedia.org/wiki/Test-driven_development) you can avoid tedious manual tests and know when things break.
 
-## Lint and Prettier
+## Pretty and correct: Lint and Prettier
 
 [ESLint](https://eslint.org/) is the first tool to avoid problems in your JS code, as it detects undefined variables, missing catches and other stuff. You should run lint on every save -- most editors have ways to do that.
 

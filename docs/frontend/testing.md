@@ -3,8 +3,26 @@
 Any project without automatic tests is bound to break and go to production broken. Tests avoid regression. Tests are also the last thing many people implement, if ever. We'll see how easy it is to add a few automatic tests
 
 :::tip
-There are many tools for Continuous Integration and Continuous Delivery these days. They automate your tests and run then on every commit. Take a look at [Jenkins](https://www.jenkins.io/) for example.
+There are many tools for Continuous Integration (CI) and Continuous Delivery (CD) these days. They automate your tests and run then on every commit. Take a look at [Jenkins](https://www.jenkins.io/) for example.
 :::
+
+## Planning your tests
+
+Don't avoid tests. Don't leave them for later.
+
+:::tip
+TDD, or Test-Driven Development, is
+:::
+
+Writing your tests as you write your code is invaluable. It makes you think about what you are writing, it makes you use your code external API and see if it makes sense in practice, it makes you structure your code with functions are independent and easily testable, and, of course, it makes sure your code actually works.
+
+When using interpreted languages such as JS and PHP, [linting](./debug.md) is even more important. It catches many problems such as typos, and you should run that in your CI even before (or in parallel) with unit tests.
+
+Testing the frontend provides a few extra challenges compared to the backend. Frontend is meant to run in a browser and have graphic output. This means we need a few extra strategies. Writing traditional unit tests will work for the majority of JS. You can [mock the AJAX calls](#mocking) to avoid needing a server available and with correct data.
+
+There are several tools these days to test code that needs a browser. [JSDOM](https://github.com/jsdom/jsdom) implements web standards in JS, allowing you to emulate a wide subset of DOM and HTML standards. This means you can run JS that needs DOM, including Vue or React, and get unit and integration tests without opening a browser. There are plugins to integrate these frameworks with JSDOM, making them a breeze to use.
+
+Testing the actual final code, however, is important for more complex tests. Longer processes such as sign ups, filling forms that use third-party services or things that require graphical interaction need to be tested with the actual code -- that's end-to-end testing (E2E). Tools have come a long, long way in recent years, and there are cloud services that can test your code in dozens of different devices. Is your code working in Safari iOS? What about Edge in Windows? Did you check Firefox Linux? Not only you can check the code works, but you can see the screenshots when it fails, which can pinpoint visual bugs, as well -- such as that button being hidden.
 
 ## Unit tests with Mocha
 
@@ -42,7 +60,9 @@ yarn test:mocha
 Using VSCode? Check [the mocha sidebar](https://marketplace.visualstudio.com/items?itemName=maty.vscode-mocha-sidebar) and run tests directly in your IDE.
 :::
 
-### Coverage
+### Code Coverage
+
+### Vue with unit tests
 
 ## End-to-end web tests with Cypress
 
