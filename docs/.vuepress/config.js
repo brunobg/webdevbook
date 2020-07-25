@@ -44,6 +44,7 @@ module.exports = {
           '/backend/deployment',
           '/backend/media',
           '/backend/pushcommunication',
+          '/backend/scraping',
         ]
       }
     ]

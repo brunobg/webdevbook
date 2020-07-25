@@ -18,7 +18,7 @@ You can start your first spider with:
     scrapy genspider example example.com
 ```
 
-But we won't get into code here.
+Next you create classes in `spiders`. We won't get into code here.
 
 ## Extracting data 101
 
@@ -50,4 +50,4 @@ Does your data change? Then you need not only a unique key, but the code that ac
 
 They say the only certainties in life are death and taxes, but you can pretty much add that crawlers will break as a third one. Since you are fetching data from third parties that you have no control of, some day they will change their website and break your crawler. Also, like any code, crawlers need to be tested. How to ensure they work and how to detect when things break?
 
-Like all other software, automatic testing is the best option we have.
+Like all other software, automatic testing is the best option we have. There's the [autounit](https://github.com/scrapinghub/scrapy-autounit) package for Scrapy, which generates the automatic tests for you.
