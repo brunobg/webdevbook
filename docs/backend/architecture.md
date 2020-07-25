@@ -34,6 +34,18 @@ GraphQL is a query language for APIs. It is also a runtime for fulfilling those 
 
 You can use GraphQL and REST in the same application. They are not even exactly the same thing. But GraphQL with a proper library is very easy to use and makes you write way less code. We'll see that it has enough information to even help us to avoid not only writing controllers, but generating a lot of the code we'll need automatically.
 
+## Monolith versus microservices
+
+There is a long standing discussion in computer programming as a whole whether to use a monolith approach or a microapproach. Like any debate it will never be settled.
+
+Microservice proponents argue that it's easier to maintain a small program, that they are less prone to bugs and that it's easier to split it into different teams. It's also easier to scale, since each service can be deployed independently of the rest, so it's trivial to spread over multiple servers. The reality is that microservices need to talk to each other and there are many problems relating to getting data without overruning the network and other services with internal requests. For example, in order to avoid doing a database hit to validate users or fetch their data on requests, a very common need, one approach is to store user data in the client with a validation mechanism such as HMAC.
+
+Monolith proponents argue that the architecture is much simpler, and that you can scale through different means, such as having database servers separated from the web servers -- something that is still easier these days using cloud services that handle a good chunk of scaling problems by themselves. They also say that while microservices might be simpler as a unit, they need to communicate with each other, and integration problems happen often, which are much more difficult to test with different services.
+
+As always, if you pull the blanket to cover your shoulders you are uncovering your feet, and vice-versa.
+
+It's undeniable that monolith applications are easier to write and that they cover very well simple cases. It's one thing to make an app for a few thousand users and one for a billion users. We'll take the monolith approach in this book for that reason, but a lot of the concepts here -- and this is related mostly to the backend, since this tends to be transparent for the frontend -- can be applied to microservices as well.
+
 ## Designing your application
 
 This is arguably the most important part of your application, and certainly the one that requires most thought in its design.

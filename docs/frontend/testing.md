@@ -11,7 +11,7 @@ There are many tools for Continuous Integration (CI) and Continuous Delivery (CD
 Don't avoid tests. Don't leave them for later.
 
 :::tip
-TDD, or Test-Driven Development, is
+TDD, or [Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development), is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the code is improved so that the tests pass.
 :::
 
 Writing your tests as you write your code is invaluable. It makes you think about what you are writing, it makes you use your code external API and see if it makes sense in practice, it makes you structure your code with functions are independent and easily testable, and, of course, it makes sure your code actually works.
