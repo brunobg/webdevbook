@@ -1,11 +1,11 @@
 ---
 home: true
 heroText: A full stack approach to integrated web and native app development
-tagline: Creating native and web apps using Vue, NativeScript and Laravel
+tagline: Creating native and web apps using GraphQL, Vue, NativeScript and Laravel
 actionText: Read the book →
 actionLink: ./frontend/introduction.md
 features:
-  - title: VueJS Frontend
+  - title: VueJS SPA Frontend
     details: Use the VueJS framework to build your frontend
   - title: Nativescript
     details: Generate native mobile applications sharing code with the web version
@@ -49,6 +49,6 @@ There are billions (ok, perhaps only millions) of languages, frameworks, databas
 
 We use [Laravel](https://laravel.com) for the backend, but the concepts would apply to any other backend as well. Laravel is a pretty low level framework for these days, but we can see the entire backend stack with it. Again, this is not a basic Laravel introduction, so it might move a bit fast you have never developed anything using it before and an introduction tutorial might be a good read first.
 
-We'll setup a Graphql endpoint for the backend, though briefly talk about REST endpoints and controllers as well. Other than the details of the communication you can implement the backend/frontend of this book paired a completely different frontend/backend.
+We'll setup a [Graphql](https://graphql.org/) endpoint for the backend, though briefly talk about REST endpoints and controllers as well. We use [Lighthouse](https://lighthouse-php.com/) and [Modelarium](https://github.com/Corollarium/modelarium) to help us. Other than the details of the communication you can implement the backend/frontend of this book paired a completely different frontend/backend.
 
 ### About the author
