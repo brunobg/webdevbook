@@ -1,6 +1,18 @@
 # File upload and camera
 
-I don't think any HTML API changed as much as the Camera API. Of course, the native API is completely different, so once again we'll add a wrapper to homogenize things.
+Uploads have been part of websites for a while, and the frontend possibilities grew over the years. These days it's possible to select multiple files to upload, preview files before uploading, upload with AJAX, show a progress bar, paste files, select files from the gallery or camera in mobile devices, directly open a camera to take a picture... It's a long list. And probably no other HTML API changed as much over time as the Camera API. Of course, the native API is completely different, so once again we'll add a wrapper to homogenize things.
+
+## The UX of uploading
+
+Uploading is a different operation than most in web applications, because you make users think about its own device. They have to select a file to upload, which makes them navigate through local menus or want to do things more naturally, like "I have the picture here, why can't I drag and drop it" or "it's in the gallery, why is it opening the camera".
+
+Here are a few guidelines for a good UX:
+
+- Show a preview when uploading pictures if it's part of a larger form. This will allow the user to see if they got the correct file before they submit it.
+- If possible, try to upload the file as soon as it's selected. This is more responsive and users don't have to wait for after they submit.
+- Take advantage of things like the [accept attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept), so users can more easily select their files.
+- Uploads are quite different in mobile and desktop. The entire interface changes. Make sure you design for and test in both and make them natural. In desktop people want to select a file from folders, paste or drag and drop. In mobile they'll want to use the camera or get something from the gallery.
+- Don't forget to validate files. It's possible to do some validation in the browser these days, which makes for a better UX.
 
 ## Camera access from web
 

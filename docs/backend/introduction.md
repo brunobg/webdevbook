@@ -21,7 +21,7 @@ DB_CONNECTION=sqlite
 DB_DATABASE=./database/database.sqlite
 ```
 
-## Serving the frontend build
+## Serving the backend
 
 Laravel provides a command for running PHP's builtin HTTP server, so you don't have to install a full server like Apache or Nginx for development. Run:
 
@@ -39,4 +39,8 @@ And open http://localhost:8000. You'll see a basic template webpage.
 By using `--host 0.0.0.0` you can acess the HTTP server from other machines, which is useful for testing with other devices. Otherwise you can only access with localhost.
 :::
 
-Your application is up and running.
+Your application is up and running. If you are making changes to the frontend and using Mix to compile JS/CSS/etc, run this in another terminal:
+
+```
+yarn run watch
+```

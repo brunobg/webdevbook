@@ -14,13 +14,13 @@ SPAs are attractive for another reason: there's a separation of frontend and bac
 
 We are taking a SPA approach in this book. In our case we are also developing a mobile app, so it makes sense that the backend will be only one, serving the same data for web and mobile. It also makes it easier to write code for the frontend, since you only have to write the communication code once.
 
-That doesn't mean that server-side rendering is dead. In fact we'll see that if we want to provide page previews with metadata, we'll have to some at least some server-side rendering. Most automated tools will download the HTML and not run the JS, so they only see what the server outputs. Indexers such as Google run JS these days, so they can index your site properly, but most crawlers, as well as preview fetchers from chat apps for example, don't.
+That doesn't mean that server-side rendering is dead. In fact we'll see that if we want to provide page previews with metadata, we'll have to some at least some server-side rendering. Most automated tools will download the HTML and not run the JS, so they only see what the server outputs. Indexers such as Google run JS these days so they can index your site properly, but most crawlers, as well as preview fetchers from chat apps for example, don't.
 
-In sites that are not very interactive, SPAs might slow make them slower with little gain. If you have static data you can pre-render the HTML on the server easily -- that's how this book is generated, pre-rendered into HTML that you download.
+In sites that are not very interactive, SPAs might make them slower with little gain. If you have static data you can pre-render the HTML on the server. There are ways to achieve a sort of mixture of the behaviors -- like this book, which generates static code in the server but uses JS to render the pages, splitting each page into a different JS file to only load the page you are reading. It's almost as fast as pure HTML, but you can create dynamic pages easily.
 
 Considering the advantages of SSR, we went full circle and started to essentially "run the frontend SPA on the server". The browser downloads a pre-rendered HTML page with data, then it runs the SPA code to make the page reactive and dynamic, which is called hydrating. Of course, this complicates things again. You need Node.js to run the frontend JS code on the server, and you increase the server load. As always, it's a trade-off.
 
-In this book we'll do SPA approach where we do not pre-render or SSR the page, but we fill the metadata to make previews possible. It's up to you whether to follow this approach. Laravel can use Blade templates to render content statically, which might be more fitting for your problem.
+In this book we'll do SPA approach where we do not pre-render or SSR the page, but we do fill the metadata to make previews possible. It's up to you whether to follow this approach. Laravel can use Blade templates to render content statically, which might be more fitting for your problem.
 
 ## GraphQL or REST?
 

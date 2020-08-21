@@ -38,6 +38,7 @@ module.exports = {
           '/backend/database',
           '/backend/testing',
           '/backend/models',
+          '/backend/routing',
           '/backend/controllers',
           '/backend/authentication',
           '/backend/security',

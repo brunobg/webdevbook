@@ -1,16 +1,18 @@
 # Routing
 
-Our SPA requires routing to change pages. Routing is something ordinary, but we'll need a few tricks here since vue-router handles things slightly different than the TNS router does. We'll build a wrapper to get around that and have the same behavior in our end code, at the cost of a more complicated code behind the scenes.
+The most radical change of SPAs is to route through Javascript, replacing the content without a request for a new base HTML file. This means that we must implement routing in the frontend (and [also in the backend](../backend/routing.md)). Routing means that the page loads its content based on the URL, and whenever a link or action takes it to a new page, the URL is replaced on the browser with Javascript and the new content is loaded.
+
+We'll need a few tricks here since vue-router handles things slightly different than the TNS router does. We'll build a wrapper to get around that and have the same behavior in our end code, at the cost of a more complicated code behind the scenes.
 
 ## Web routing with vue-router
 
-Vue-router is the standard router for vue. Let's install it.
+[Vue-router](https://router.vuejs.org/) is the standard router for vue. Let's install it.
 
 ```shell
 yarn add vue-router
 ```
 
-We're not doing anything unusual in our router. We add a behavior to ensure that scroll is maintained when we navigate back and forward, and we also update the document title to match the page name.
+Our router essentially maps URLs to components. We add a behavior to ensure that scroll is maintained on each page when we navigate back and forward, and we also update the document title to match the page name.
 
 ```js
 import Vue from "vue";
@@ -54,7 +56,7 @@ router.beforeEach((to, from, next) => {
 export default router;
 ```
 
-In the [authentication chapter](./authentication.md#routing-and-authenticated-pages) we'll extend this code to ensure that pages that require authentication are blocked to unauthenticated users.
+Vue-router is flexible and enables multiple callbacks before and after routing. You can also provide a 404 page. In the [authentication chapter](./authentication.md#routing-and-authenticated-pages) we'll extend this code to ensure that pages that require authentication are blocked to unauthenticated users.
 
 The router must be passed to the application when it is initialized, in main.js.
 
