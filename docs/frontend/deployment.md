@@ -6,7 +6,7 @@ Deployment should be a one-step process at the most if you are not using CD, and
 Write a script for building and another for deploying your application, which can be easily called by a CD tool.
 :::
 
-Ideally the building and deployment will be handled by your CI/CD tool.
+Ideally the building and deployment will be handled by your CI/CD tool. We talk about [deployment on the backend section as well](../backend/deployment.md).
 
 ## Setup
 
@@ -69,4 +69,4 @@ One disadvantage of this is that your meta tags on `<head>` are not dynamic eith
 
 One is to use the [prerender SPA plugin](https://github.com/chrisvfritz/prerender-spa-plugin). This works well if you have a static content, but does not scale to hundres of routes or dynamic content.
 
-For completely dynamic content, SSR is required. There's a [SSR guide from Vue](https://ssr.vuejs.org/). This is a backend problem, so we'll talk about it [on the backend](../backend/deployment.md).
+For completely dynamic content, SSR is required. There's a [SSR guide from Vue](https://ssr.vuejs.org/). This is a backend problem, so we'll talk about it [on the backend](../backend/ssr.md).
