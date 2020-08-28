@@ -2,7 +2,7 @@
 
 There are several considerations when you start an application. This section will details some basic choices you have to make.
 
-## Server-side render versus SPAs
+## Server-side render (SSR) versus Single Page Applications (SPA)
 
 Originally the web worked in a simple way: the server sent HTML ready for the browser to render and show. There was no dynamic data transference between the browser and the server; everything was a HTML page. With Javascript appearing and XHR (ajax), it became possible to fetch data without navigating to a new page. Eventually some people started to implement the entire generation of HTML on the client, and the server only sent pure data in JSON or XML formats. So Single Page Applications were born.
 
@@ -14,7 +14,7 @@ SPAs are attractive for another reason: there's a separation of frontend and bac
 
 We are taking a SPA approach in this book. In our case we are also developing a mobile app, so it makes sense that the backend will be only one, serving the same data for web and mobile. It also makes it easier to write code for the frontend, since you only have to write the communication code once.
 
-That doesn't mean that server-side rendering is dead. In fact we'll see that if we want to provide page previews with metadata, we'll have to some at least some server-side rendering. Most automated tools will download the HTML and not run the JS, so they only see what the server outputs. Indexers such as Google run JS these days so they can index your site properly, but most crawlers, as well as preview fetchers from chat apps for example, don't.
+That doesn't mean that server-side rendering is dead. In fact we'll [talk about it briefly](./ssr.md) and see that if we want to provide page previews with metadata, we'll have to some at least some server-side rendering. Most automated tools will download the HTML and not run the JS, so they only see what the server outputs. Indexers such as Google run JS these days so they can index your site properly, but most crawlers, as well as preview fetchers from chat apps for example, don't.
 
 In sites that are not very interactive, SPAs might make them slower with little gain. If you have static data you can pre-render the HTML on the server. There are ways to achieve a sort of mixture of the behaviors -- like this book, which generates static code in the server but uses JS to render the pages, splitting each page into a different JS file to only load the page you are reading. It's almost as fast as pure HTML, but you can create dynamic pages easily.
 
