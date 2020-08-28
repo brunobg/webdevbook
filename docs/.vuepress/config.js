@@ -11,6 +11,7 @@ module.exports = {
         sidebarDepth: 2,
         children: [
           '/frontend/introduction',
+          '/frontend/setup',
           '/frontend/interface',
           '/frontend/debug',
           '/frontend/deployment',
@@ -44,6 +45,7 @@ module.exports = {
           '/backend/authentication',
           '/backend/security',
           '/backend/deployment',
+          '/backend/ssr',
           '/backend/media',
           '/backend/pushcommunication',
           '/backend/scraping',

@@ -7,7 +7,9 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 ## Frontend
 
 - [x] introduction
-- [ ] interface
+- [x] setup
+- [x] interface
+  - [ ] Design considerations
 - [x] debug
   - [ ] Android
   - [ ] iOS
@@ -43,7 +45,7 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 
 Frontend will be written first.
 
-- [ ] introduction
+- [x] introduction
 - [x] architecture
 - [x] structure
 - [ ] setup
@@ -54,7 +56,8 @@ Frontend will be written first.
 - [ ] controllers
 - [ ] authentication
 - [ ] security
-- [ ] deployment
+- [x] deployment
+- [ ] SSR
 - [ ] media
 - [ ] pushcommunication
-- [ ] scraping
+- [x] scraping

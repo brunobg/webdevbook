@@ -1,4 +1,16 @@
-# Building the interface
+# Interface
+
+## Design considerations
+
+### UX: User Experience
+
+### Mobile first or desktop first
+
+TODO
+
+### Designers and developers
+
+## Building the interface
 
 After setup the scaffolding you are ready to start building the app. Let's add some stuff and get this going.
 

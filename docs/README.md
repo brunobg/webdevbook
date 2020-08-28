@@ -54,3 +54,5 @@ We use [Laravel](https://laravel.com) for the backend, but the concepts would ap
 We'll setup a [Graphql](https://graphql.org/) endpoint for the backend, though briefly talk about REST endpoints and controllers as well. We use [Lighthouse](https://lighthouse-php.com/) and [Modelarium](https://github.com/Corollarium/modelarium) to help us. Other than the details of the communication you can implement the backend/frontend of this book paired a completely different frontend/backend.
 
 ### About the author
+
+Bruno Barberi Gnecco is an electrical engineer with a long experience of software development and project management, including web and mobile applications, virtual and augmented reality, and image and video processing. Founder of [Corollarium Technologies](https://corollarium.com), which specializes in software development in these areas.
