@@ -17,9 +17,9 @@ This book is about how to design the architecture and implement a full web/nativ
 
 ## What is this book about?
 
-This book is about how to design the architect of an application and have a code that works well and is maintanable. It goes through the entire process of creating an application, with tips about what you should consider and what you should pay attention to. It also explains how to solve a few common problems that are present in most current web/native applications.
+This book is about how to design the architect of an application and have a code that works well and is maintainable. It goes through the entire process of creating an application, with tips about what you should consider and what you should pay attention to. It also explains how to solve a few common problems that are present in most current web/native applications.
 
-This book details one possible path, which is of course not the only possible way to do it, and not even the most cutting edge way released yesterday -- which is old by tomorrow. The book describes a traditional approach with good general guidelines that work well, with proven, modern and widely used tools and practices. It's simple to setup and scales well enough except for very large sites.
+This book details one possible path, which is of course not the only possible way to do it, and not even the most cutting edge way released yesterday -- which is old by tomorrow. The book describes a traditional approach with good general guidelines that work well, with proven, modern and widely used tools and practices. It's simple to setup and scales well enough except for very large sites. You certainly should know this basic approach before venturing into more complex architectures.
 
 The book goes through the usual the gotchas that someone implementing a real life project will face, so hopefully it will avoid you many hours of reading StackOverflow, unresolved issues on Github and forums in foreign languages that apparently are the only place in the web that has the exact error message you are getting.
 

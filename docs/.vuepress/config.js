@@ -37,9 +37,9 @@ module.exports = {
           '/backend/architecture',
           '/backend/structure',
           '/backend/setup',
+          '/backend/testing',
           '/backend/models',
           '/backend/database',
-          '/backend/testing',
           '/backend/routing',
           '/backend/controllers',
           '/backend/authentication',
@@ -62,5 +62,17 @@ module.exports = {
       a: 'href',
       Fig: 'src',
     };
-  }
+  },
+  plugins: [
+    // you can use this plugin multiple times
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'comment',
+        defaultTitle: {
+          '/': ''
+        }
+      },
+    ],
+  ],
 }

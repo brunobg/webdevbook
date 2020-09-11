@@ -64,7 +64,9 @@ Using VSCode? Check [the mocha sidebar](https://marketplace.visualstudio.com/ite
 
 ### Vue with unit tests
 
-## End-to-end web tests with Cypress
+## End-to-end tests
+
+### Cypress
 
 End-to-end (E2E) tests have the nice quality of running the exact same operations and on the exact interface your users will run. This is as close as possible to someone actually using the system. On the other hand they are more prone to break -- if you change the interface too much, the tests break. It's also hard to write E2E tests as part of TDD: you need to know what the interface is like before you can implement them.
 
@@ -99,7 +101,7 @@ Let's test our registration system as an example of E2E. This is a complex opera
 
 https://www.cypress.io/blog/2017/11/28/testing-vue-web-application-with-vuex-data-store-and-rest-backend/
 
-## End-to-end native tests with Appium
+### Appium
 
 ## Mocking
 

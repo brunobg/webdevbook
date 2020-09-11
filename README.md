@@ -48,10 +48,10 @@ Frontend will be written first.
 - [x] introduction
 - [x] architecture
 - [x] structure
+- [x] testing
 - [ ] setup
 - [ ] models
 - [ ] database
-- [ ] testing
 - [ ] routing
 - [ ] controllers
 - [ ] authentication
