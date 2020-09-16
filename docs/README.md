@@ -43,7 +43,9 @@ This book goes through the almost the entire stack of development tools used the
 
 ## Is there code?
 
-Last, but not least, the base code from this book is available on the [frontend]() and [backend]() repositories. This should be useful for experienced developers as well as a quick scaffolding for apps, so you can be up and running with a web/native application and backend in very little time, and with working solutions for boring things like authentication or internalization.
+This book does not create a single application, and there's not a single repository with its code, but there are code examples in repos for you to download, read and run. This should be useful for experienced developers as well as a quick scaffolding for apps, so you can be up and running with a web/native application and backend in very little time, and with working solutions for boring things like authentication or internalization.
+
+You should check the [Modelarium HelloWorld](https://github.com/Corollarium/modelarium-helloworld) example for a very simple web app. A more involved example is at [Modellarium Example](https://github.com/Corollarium/modelarium-example).
 
 ### The tech stack
 
