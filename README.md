@@ -43,14 +43,13 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 
 ## Backend
 
-Frontend will be written first.
-
 - [x] introduction
 - [x] architecture
 - [x] structure
 - [x] testing
-- [ ] setup
-- [ ] models
+- [x] setup
+- [x] models
+  - [ ] polymorphism
 - [ ] database
 - [ ] routing
 - [ ] controllers

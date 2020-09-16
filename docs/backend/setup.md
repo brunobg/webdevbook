@@ -10,12 +10,14 @@ cd mybackend
 php artisan key:generate
 ```
 
-This will create the scaffolding for your Laravel project; we're targetin Laravel 7.x in this book. Edit `.env` with your database settings. You can use several database backends and we'll talk about it later. To get started quickly you can setup a [SQLite](https://sqlite.org) database easily:
+This will create the scaffolding for your Laravel project; we're targeting Laravel 7.x in this book. Edit `.env` with your database settings. You can use several database backends. To get started quickly you can setup a [SQLite](https://sqlite.org) database easily:
 
 ```
 DB_CONNECTION=sqlite
-DB_DATABASE=./database/database.sqlite
+DB_DATABASE=/your/path/database/database.sqlite
 ```
+
+You need to create the SQLite file manually: `touch /your/path/database/database.sqlite`.
 
 ## Serving the backend
 

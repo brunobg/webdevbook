@@ -26,6 +26,31 @@ If you are using Modelarium the migration files are created for you, and automat
 
 ### Many to one
 
+If we were doing everything manually first we'd declare their migration, users:
+
+```php
+    Schema::create('users', function (Blueprint $table) {
+        $table->bigIncrements("id");
+        $table->string("name");
+        $table->string("password");
+        $table->string('email', 256);
+        $table->timestamps();
+    });
+```
+
+and posts:
+
+```php
+    Schema::create('posts', function (Blueprint $table) {
+        $table->bigIncrements("id");
+        $table->string("title");
+        $table->text('content');
+        $table->unsignedBigInteger("user_id");
+        $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
+        $table->timestamps();
+    });
+```
+
 ### Many to many
 
 ### Polymorphic one-to-one
