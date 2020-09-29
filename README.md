@@ -50,7 +50,7 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 - [x] setup
 - [x] models
   - [ ] polymorphism
-- [ ] database
+- [x] database
 - [ ] routing
 - [ ] controllers
 - [ ] authentication
