@@ -46,9 +46,19 @@ As always, if you pull the blanket to cover your shoulders you are uncovering yo
 
 It's undeniable that monolith applications are easier to write and that they cover very well simple cases. It's one thing to make an app for a few thousand users and one for a billion users. We'll take the monolith approach in this book for that reason, but a lot of the concepts here -- and this is related mostly to the backend, since this tends to be transparent for the frontend -- can be applied to microservices as well.
 
+### Model-View-Controller (MVC)
+
+A popular architecture for web development is the Model-View-Controller (MVC), which is followed by Laravel. The idea is to separate development into three parts with clearly defined roles..
+
+The **model** is responsible for holding data and operations on it. Each type in your application will have a model, like `User`, or `Post`. Models fetch and save data in your database, and might have a few auxiliary methods to compute dynamic data (such as `age()`, which calculates the age in years from a `birthDate` field) or to perform some practical operations. They can be auxiliary queries, like a method `usersOver18()` to get all users over 18 years old, or a more complex operation on a single model that you want to isolate and abstract, like `totalComments()` or `lockPost()`.
+
+The **view** converts a model into a GUI. It can be done on the frontend if you are using SPA (or just some form of frontend rendering), or on the backend if you generate your HTML there, for example with Blade templates.
+
+The **controller** does the intermediate work between the view and the model. It receives user requests, fetches data -- perhaps doing validation or aggregation -- and returns it to the user. In this book GraphQL requests are handled by a controller, but this is transparent to you, so you may not have to write a single controller. If you are using a REST architecture you'll have to write controllers for your CRUD (Create, Read, Update, Delete) endpoints.
+
 ## Designing your application
 
-This is arguably the most important part of your application, and certainly the one that requires most thought in its design.
+This is arguably the most important part of your development process, and certainly the one that requires most thought. This is a simple guide of questions you must answer in this phase.
 
 ### What types do you have in your system?
 
@@ -58,17 +68,17 @@ You almost certainly will have `Users`. What do they do? If it's a communication
 
 Or you are building an ecommerce store. Perhaps it has `Users` to save their information, but you might be selling without even creating a `User` entry and storing it all on the invoice. But you have `Products`, which might have `Reviews`, and the `Invoices` for purchases. But invoices are a complex type, with several rows of different data. So you might want an `InvoiceItem` type with the product purchasen, the amount and price, and who bought it.
 
-### What are the relationships?
+### What are the relationships between types?
 
 Remember, SQL databases do not have arrays as a primary datatype, so whenever you have an array it's probably better to store it as a relationship with another type -- like the `InvoiceItem` example. The relationships can be one-to-one, one-to-many or many-to-many. It may be a good idea to draw an ER diagram with your modeling.
 
-### What queries to do need?
+### What types of queries will I need?
 
-It's likely that you'll want to list the entries of a certain type, and fetch information about a specific entry. What about other queries? Perhaps searching products by name, or listing all posts with a specific tag.
+It's likely that you'll want to list the entries of a certain type, and fetch information about a specific entry. What about other requests? Perhaps searching products by name, or listing all posts with a specific tag. This will end up being your API and is very relevant with a SPA or if you enable third-party access to your application. Even if you are doing everything on the backend, it's useful to have methods that will perform these database accesses for you in a simple, abstracted way.
 
 ### What mutations are possible on each type?
 
-You need to be able to create a type instance, such as a new `Post` or new `Product`. Do you want to delete them though? You might want to keep them forever. What about editing? Can you change that instance after it's created? The basic operations on a type (CRUD, for Create, Read, Update, Delete) are not necessarily implemented for all types. You might not even want to expose a create operation if you have a limited, fix set of instances that are generated during the setup of your application -- for example, t-shirt sizes.
+You need to be able to create a new type instance, such as a new `Post` or new `Product`. Do you want to delete them though? You might want to keep them forever. What about editing? Can you change that instance after it's created? The basic operations on a type (CRUD, for Create, Read, Update, Delete) are not necessarily implemented for all types. You might not even want to expose a create operation if you have a limited, fix set of instances that are generated during the setup of your application -- for example, t-shirt sizes.
 
 With GraphQL all the operations that generate changes to the database are called _mutations_. We're going to list all mutations and organize them with the model type definition to make them easier to find. Sometimes creating can be a mutation in another type: for example, creating a comment can be a `commentPost` mutation. Adding new pictures can be a `postPhoto` mutation.
 
