@@ -40,6 +40,10 @@ type Something {
 
 Some attention may be required for arrays. LighthousePHP and Modelarium handle arrays for relationships, automatically generating the correct one-to-many or many-to-many code for you. You need to take more care when declaring arrays of basic types, since you'll have to so some sort of manipulation on the data coming from a relational database.
 
+## Using models
+
+TODO
+
 ## Relationships
 
 Modelarium and Lighthouse implement `@hasOne`, `@hasMany`, `@belongsTo`, `@belongsToMany` and so on, making it easy to declare all relationships from the GraphQL description alone and have their code generated for you, but we also show the counterpart PHP code.
@@ -266,5 +270,9 @@ class User extends Model
 TODO
 
 ### Polymorphic many-to-many
+
+TODO
+
+## Queries
 
 TODO

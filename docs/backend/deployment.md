@@ -1,5 +1,7 @@
 # Deployment
 
+Well, you wrote your application. Now it has to run in the wild. How to deploy? What are good ways to setup the server architecture? What are the bottlenecks you'll face? Also... have you ever heard of our lord and savior, the backup?
+
 ## One-click or continuous deployment
 
 There are only two sane options for deploying your application: you can have a one-click process to deploy your code, or you can have a zero-click process to deploy it.
