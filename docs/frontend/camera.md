@@ -31,7 +31,7 @@ Of course, even in the web, we have a slightly different way to handle mobile an
     />
     <a class="button is-info">
       <b-icon icon="upload"></b-icon>
-      <translate>Click to upload</translate>
+      Click to upload
     </a>
     <span class="file-name" v-if="file">{{ file.name }}</span>
   </b-field>

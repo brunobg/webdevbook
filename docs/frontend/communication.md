@@ -92,3 +92,5 @@ this.$store.dispatch("fetchUser").then(() => {
 This avoids an independent fetch/commit in your code, and makes Vuex handle all the communication. You could even route it through you communication class instead of directly making the request in Vuex.
 
 ## Sending images and other binary data
+
+## Apollo

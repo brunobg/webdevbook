@@ -22,10 +22,16 @@ Deletion is often made through a button in one of the components, so it doesn't 
 
 There is a [project called VueMC](https://vuemc.io) with a structure for models and collections compatible with Vue if you are looking for a ready-made solution. We'll design our model class from scratch
 
+TODO
+
 ## Forms
+
+TODO
 
 ## Validation
 
 Vue has several libs for form validation.
 
 # Collections
+
+TODO

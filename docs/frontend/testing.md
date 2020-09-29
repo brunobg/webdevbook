@@ -62,7 +62,11 @@ Using VSCode? Check [the mocha sidebar](https://marketplace.visualstudio.com/ite
 
 ### Code Coverage
 
+TODO
+
 ### Vue with unit tests
+
+TODO
 
 ## End-to-end tests
 
@@ -103,6 +107,10 @@ https://www.cypress.io/blog/2017/11/28/testing-vue-web-application-with-vuex-dat
 
 ### Appium
 
+TODO
+
 ## Mocking
 
 [Mirage](https://miragejs.com/) and [Nock](https://github.com/nock/nock) are packages that allow you to easily mock calls
+
+TODO

@@ -1,14 +1,22 @@
 # Interface
 
+TODO
+
 ## Design considerations
 
+TODO
+
 ### UX: User Experience
+
+TODO
 
 ### Mobile first or desktop first
 
 TODO
 
 ### Designers and developers
+
+TODO
 
 ## Building the interface
 
