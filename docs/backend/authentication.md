@@ -42,7 +42,7 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 ],
 ```
 
-TODO
+TODO, finish, Routing,
 
 ## OAuth
 
@@ -52,4 +52,4 @@ php artisan passport:install
 
 Remember to [add these values to your .env files on the frontend](../frontend/authentication.md).
 
-TODO
+TODO, finish, Routing,

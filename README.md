@@ -51,7 +51,7 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 - [x] models
   - [ ] polymorphism
 - [x] database
-- [ ] routing
+- [x] routing
 - [ ] controllers
 - [ ] authentication
 - [ ] security
