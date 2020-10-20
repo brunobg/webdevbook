@@ -40,6 +40,7 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
   - [ ] Paste from clipboard
 - [x] sharing
 - [ ] caching
+- [x] last
 
 ## Backend
 
@@ -52,11 +53,12 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
   - [ ] polymorphism
 - [x] database
 - [x] routing
-- [ ] controllers
-- [ ] authentication
+- [-] controllers
+- [-] authentication
 - [ ] security
 - [x] deployment
 - [ ] SSR
 - [ ] media
 - [ ] pushcommunication
 - [x] scraping
+- [x] last

@@ -1,6 +1,6 @@
 # Scraping and crawlers
 
-This chapter is an aside. It will talk a bit about scraping data from the internet. Maybe you need to pull data from sites that don't have an API, maybe you are migrating from a site that is so awful that there's no way to get structured data from the database itself. This is a short and rough overview of how you can write a simple crawler to do that, and strategies to make it work well.
+This chapter is almost an appendix. It will talk a bit about scraping data from the internet. Maybe you need to pull data from sites that don't have an API, maybe you are migrating from a site that is so awful that there's no way to get structured data from the database itself. This is a short and rough overview of how you can write a simple crawler to do that, and strategies to make it work well.
 
 There are many, many services online these days that not only crawl for you, but do data processing too, with a lot of code ready for you in simple web interfaces. It's quite possible that they will be easier and faster to use than writing code.
 
