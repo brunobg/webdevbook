@@ -26,6 +26,7 @@ module.exports = {
           '/frontend/camera',
           '/frontend/sharing',
           '/frontend/caching',
+          '/frontend/last',
         ]
       },
       {
@@ -49,6 +50,7 @@ module.exports = {
           '/backend/media',
           '/backend/pushcommunication',
           '/backend/scraping',
+          '/backend/last',
         ]
       }
     ]
