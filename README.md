@@ -55,7 +55,7 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 - [x] routing
 - [-] controllers
 - [-] authentication
-- [ ] security
+- [x] security
 - [x] deployment
 - [ ] SSR
 - [ ] media
