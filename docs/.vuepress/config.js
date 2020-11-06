@@ -11,8 +11,9 @@ module.exports = {
         sidebarDepth: 2,
         children: [
           '/frontend/introduction',
-          '/frontend/setup',
+          '/frontend/reactive',
           '/frontend/interface',
+          '/frontend/setup',
           '/frontend/debug',
           '/frontend/deployment',
           '/frontend/routing',

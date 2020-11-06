@@ -1,6 +1,6 @@
 # Setup
 
-This section explains the basic setup to create your project.
+This section explains the basic setup to create your project. It goes into how to use JS transpilers, CSS preprocessors etc.
 
 ## Basic dependencies
 

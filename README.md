@@ -7,6 +7,7 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 ## Frontend
 
 - [x] introduction
+- [ ] reactive
 - [x] setup
 - [x] interface
   - [ ] Design considerations
