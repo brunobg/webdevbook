@@ -60,6 +60,6 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 - [x] deployment
 - [ ] SSR
 - [x] media
-- [ ] pushcommunication
+- [-] pushcommunication
 - [x] scraping
 - [x] last

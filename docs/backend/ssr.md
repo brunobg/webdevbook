@@ -2,7 +2,7 @@
 
 ## No SPA
 
-While this books advocates a SPA approach, this section give a quick overview of how you can render HTML entirely on the server.
+While this books advocates a SPA approach, this section gives a quick overview of how you can render HTML entirely on the server.
 
 ## SPA and OpenGraph tags
 
