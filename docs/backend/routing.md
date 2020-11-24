@@ -1,17 +1,17 @@
 # Routing
 
-Routing consists of processing HTTP requests to web endpoints and calling the appropriate code to handle it. In other words, when someone accesses `/post/23`, the appropriate code for showing the user with id 23 must be called. Most web frameworks let you handle routes dynamically. You can also use routing for URL redirection.
+Routing consists of processing HTTP requests to URLs and calling the appropriate code to handle them. In other words, when someone accesses `/post/23`, the appropriate code for showing the user with id 23 must be called. Most web frameworks let you handle routes dynamically. You can also use routing for URL redirection.
 
 Laravel has a [well structured routing mechanism](https://laravel.com/docs/routing). Your application has a `routes/` subdirectory, which has 4 files with self descriptive names: `api.php`, `channels.php`, `console.php` and `web.php`. Add the routing code to the appropriate file.
 
-In a SPA, backend routing is quite limited. All non-API requests should serve static content: the basic static HTML, JS and CSS, or dynamic files like images uploaded by users; the [frontend will do its own routing](../frontend/routing.md) and render the correct HTML. The static data served might have only two points to consider:
+In a SPA, backend routing is quite limited. Non-API requests should serve static content: the basic static HTML, JS and CSS, or dynamic files like images uploaded by users; the [frontend will do its own routing](../frontend/routing.md) and render the correct HTML. There are a couple of points to consider with static data:
 
 - if you split your frontend code into separate and independent bundles, like a code for the main site and one of the admin dashboard, you'll have different static data for each one. Some of them might be protected by authentication and other middleware, but other than that it's just standard static files served by your web server or CDN.
 - [header metadata](ssr.md). This is relevant to crawlers or social media, and it's addressed in its own section.
 
 The API requests have to be handled by the backend. In a REST approach you'll need to write routes for each endpoint. It's best to define a base URL, like `/api/`, for all these requests. If you have a breaking change you can also version things, with `/apiv2` or `/api/v2` as the base URL.
 
-A SPA Graphql application should have very few endpoints. All API requests go to `/graphql`, and if you are using Lighthouse, or a similar library, it will setup the endpoint for you, so it's unlikely you'll need to do anything else about that. You'll have the [authentication endpoints, which are explained in their own section](./authentication.md). You might have some other special endpoints, such as generating dynamic sitemaps on `/sitemap`. Other than these particular needs you'll mostly ignore routing except for a catch-all route, as detailed below.
+A SPA GraphQL application should have very few endpoints. All API requests go to `/graphql`, and if you are using Lighthouse, or a similar library, it will setup the endpoint for you, so it's unlikely you'll need to do anything else about that. You'll have the [authentication endpoints, which are explained in their own section](./authentication.md). You might have some other special endpoints, such as generating [dynamic sitemaps](https://www.sitemaps.org/) on a URL like `/sitemap`. Other than these particular needs you'll mostly ignore routing except for a catch-all route, as detailed below.
 
 In a traditional server-side rendering however, each page needs its own route. This makes routing much more important and relevant. We'll have a brief overview about it.
 

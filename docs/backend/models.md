@@ -12,7 +12,7 @@ Let's see about this. We'll briefly go over the different relationship types and
 If you are using Modelarium all the PHP code for relationships described in this section will be generated automatically for you from the GraphQL code.
 :::
 
-In Laravel we must declare relationships on the models, so it knows what types to expect and what cardinality. Laravel has an [ORM called Eloquent](https://laravel.com/docs/eloquent), which is a layer to access the database without writing SQL manually. Laravel also has [good documentation on relationships[(https://laravel.com/docs/eloquent-relationships), which this file mostly skims over. You'll also have to [create your data on the database, which we'll talk about later](./database.md).
+In Laravel we must declare relationships on the models, so it knows what types to expect and what cardinality. Laravel has an [ORM called Eloquent](https://laravel.com/docs/eloquent), which is a layer to access the database without writing SQL manually. Laravel also has [good documentation on relationships](https://laravel.com/docs/eloquent-relationships), which this file mostly skims over. You'll also have to [create your data on the database, which we'll talk about later](./database.md).
 
 ## Models (types) in Graphql
 
@@ -26,7 +26,7 @@ type Something {
 }
 ```
 
-The `!` marks that field as required. Note that Graphql allows arrays of basic types, unlike SQL:
+The `!` marks that field as required. Note that Graphql allows arrays of basic types, unlike SQL (but which is common in NoSQL):
 
 ```graphql
 type Something {
@@ -40,19 +40,29 @@ type Something {
 
 Some attention may be required for arrays. LighthousePHP and Modelarium handle arrays for relationships, automatically generating the correct one-to-many or many-to-many code for you. You need to take more care when declaring arrays of basic types, since you'll have to so some sort of manipulation on the data coming from a relational database.
 
-## Using models
+## Designing models
 
-TODO
+Models should be independent, self-contained sets of information that are useful. Very large models are complicated to deal with, error-prone and easier to break. Databases may also not handle tables with a very large number of columns as well as smaller ones. In general entries are stored contiguously and it's faster to read smaller entries, but this has changed a bit with move to SSD and newer DB engines. Nevertheless it's still a good rule of thumb both in regards to organization and performance.
+
+Try to be as specific in your fields as possible. If you are using only integers, don't declare the type as a string. Databases are limited in their type system, and PHP (as well as JS, and even Python; interpreted languages usually are weakly typed) can also handle data automatically converting it when necessary. Input should never be trusted, and your code will also have bugs. If you design your models so that fields are validated you'll avoid a number of bugs and security problems. Ideally you should use a strong(er) type system. Even if not supported as primitives in your language, you can use libraries that ensure that data matches a type.
+
+There's a powerful difference between checking data and checking types. If you check data you only guarantee that field in that particular point to match your validation rules; if you use types you have a unique code that does validation for all fields of that type, and which might be called by different parts of your code.
+
+At the same time, don't add constraints to your fields if you don't have a good reason for them. Don't force fields to have a minimum size unless that makes sense, or a short maximum size. Remember people use all kinds of languages and that Unicode is absolutely required these days.
+
+Designing data structures is a hard problem. Even something as simple as [a physical address is very hard](https://www.mjt.me.uk/posts/falsehoods-programmers-believe-about-addresses/), and programmers often [have beliefs that are false](https://github.com/kdeldycke/awesome-falsehood). You can and should follow standards whenever they exist. [Schema.org](https://schema.org/) is far from perfect, but it's a decent vocabulary that is used by several search engines and W3, therefore also having the benefit of SEO. Don't reinvent the wheel.
 
 ## Relationships
+
+Different models will have relationships between them. These means links or pointers between the models, such as a `User` has an `Address`. SQL uses primary keys for these relationships, which is mostly abstracted with ORMs. GraphQL uses primary ids as well.
 
 Modelarium and Lighthouse implement `@hasOne`, `@hasMany`, `@belongsTo`, `@belongsToMany` and so on, making it easy to declare all relationships from the GraphQL description alone and have their code generated for you, but we also show the counterpart PHP code.
 
 ### One to one relationships
 
-If you expect a type to have a single relationship to another type, and vice-versa, that's a 1:1 relationship. A good example is with spouses: in most places if you are married, you have just one spouse and vice-versa. 1:1 relationships are usually uncommon. It's often simpler to put the data into a single table: for example, addresses. But sometimes it's wise to split into separate tables to make tables smaller, which can be more efficient. We'll [describe the database code later](./database.md#one-to-one).
+If you expect a type to have a single relationship to another type, and vice-versa, that's a 1:1 relationship. A good example is with spouses: in most places if you are married, you have just one spouse and vice-versa. 1:1 relationships are usually uncommon in databases. It's often simpler to put the data into a single table: for example, addresses (if you allow a single address per user). But sometimes it's wise to split into separate tables to make tables smaller, which can be more efficient, or simpler to deal with and with simpler model classes. We'll [describe the database code later](./database.md#one-to-one).
 
-Let's suppose our users can have only one pass, which is unique.
+Let's suppose our users can have only one ticket pass, which is unique.
 
 ```graphql
 type User {

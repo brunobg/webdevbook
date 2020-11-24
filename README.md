@@ -54,12 +54,12 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
   - [ ] polymorphism
 - [x] database
 - [x] routing
-- [-] controllers
+- [x] controllers
 - [-] authentication
 - [x] security
 - [x] deployment
 - [ ] SSR
-- [ ] media
+- [x] media
 - [ ] pushcommunication
 - [x] scraping
 - [x] last

@@ -2,15 +2,15 @@
 
 ## Database
 
-There are many flavors of databases these days. Classic SQL running locally, NoSQL, many cloud solutions. Laravel comes from the classic history of relational databases using SQL. We'll stay away from NoSQL in this book.
-
-As this is not a devops book, we'll not dive deeply into setup of database software, such as MariaDB, MySQL or PostgreSQL. Cloud solutions often have a SQL service, such as [AWS RDS](https://aws.amazon.com/rds/), [Digital Ocean Managed Databases](https://www.digitalocean.com/docs/databases/) and a multitude of other services. So you can use this book with your favorite cloud provider following its instructions for configuration.
+There are many flavors of databases these days. Classic SQL running locally, NoSQL, many cloud solutions. As this is not a devops book, we'll not dive deeply into setup of database software, such as MariaDB, MySQL or PostgreSQL. Cloud solutions often have a SQL service, such as [AWS RDS](https://aws.amazon.com/rds/), [Digital Ocean Managed Databases](https://www.digitalocean.com/docs/databases/) and a multitude of other services. So you can use this book with your favorite cloud provider following its instructions for configuration.
 
 :::tip
 If you are using [Modelarium](https://github.com/Corollarium/modelarium), migrations, factory and seed files are automatically created for you.
 :::
 
 It's wise that the developer uses the same kind of database you are using in production, so install MySQL, PostgreSQL, SQL Server or your favorite flavor locally. It's essential for a CI server to use the same flavor and version, or you might miss a few bugs that will only be detected in production -- you might even use the same database server, at least while you're small. Note that although we showed how to use SQLite in the [introduction](./introduction.md), since it's trivial to setup and use, it is a more limited DB by definition. You probably don't want to use it in production for websites, unless it's a small project.
+
+While you might need to use SQL queries directly in your code, we'll deal here with Eloquent, Laravel's ORM.
 
 ## Migrations
 
