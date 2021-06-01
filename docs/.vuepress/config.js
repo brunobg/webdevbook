@@ -1,10 +1,21 @@
 module.exports = {
   base: "/webdevbook/",
-  title: "A full stack approach to integrated web and native app development",
+  title: "Web development: management, frontend and backend",
   description: "Creating native and web apps using Vue, NativeScript and Laravel",
   themeConfig: {
     sidebar: [
       '/',
+      {
+        title: 'Software projects',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: [
+          '/project/introduction',
+          '/project/newproject',
+          '/project/methodology',
+          '/project/design',
+        ]
+      },
       {
         title: 'Frontend',
         collapsable: true,

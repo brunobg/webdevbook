@@ -4,6 +4,14 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
 
 # To do list
 
+## Project and management
+
+- [ ] Software projects for dummies
+- [ ] Software development methodology
+- [ ] What every developer should know about design (and designers should too)
+  - [ ] Users, that pesky little problem
+- [ ] Tools for software development and project management
+
 ## Frontend
 
 - [x] introduction
@@ -16,8 +24,8 @@ The book is [available to read at https://brunobg.github.io/webdevbook/](https:/
   - [ ] iOS
 - [x] deployment
   - [ ] iOS
-- [ ] routing
-- [ ] state and storage
+- [-] routing
+- [-] state and storage
 - [x] authentication
   - [ ] sign up code
   - [ ] login code

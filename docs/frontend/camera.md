@@ -93,4 +93,6 @@ tns add nativescript-camera
 
 ## Paste from clipboard
 
+It's easy to allow users to paste images to a web page these days and capture/upload these images.
+
 https://developers.google.com/web/fundamentals/media/capturing-images
