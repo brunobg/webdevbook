@@ -22,6 +22,11 @@
           class="action-button"
           :item="actionLink2"
         />
+        <NavLink
+          v-if="data.actionText3 && data.actionLink3"
+          class="action-button"
+          :item="actionLink3"
+        />
       </p>
     </header>
 
@@ -68,6 +73,13 @@ export default {
       return {
         link: this.data.actionLink2,
         text: this.data.actionText2,
+      };
+    },
+
+    actionLink3() {
+      return {
+        link: this.data.actionLink3,
+        text: this.data.actionText3,
       };
     },
   },

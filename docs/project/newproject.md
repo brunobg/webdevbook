@@ -2,13 +2,19 @@
 
 So, you have a new software project. This section may be interesting even for non-developers: perhaps you want to build your own app. Or you are a software developer with a new project that you are leading for the first time. You are creating your own startup. This section is a very brief overview of what you should have in mind.
 
+:::comment
+**Failure reason #1**
+
+People don't know what they are building.
+:::
+
 ## What is your project?
 
-Your first task as someone responsible for a software, be it the entire project or a small module, is to have a very good idea of it. You need to be able to answer these questions:
+Your first task as someone responsible for a software, be it the entire project or a small module, is to have a very good idea of what you are trying to build. And this is valid for your startup, too. You need to be able to answer these questions:
 
 1. What does it do? You must be able to answer this in a short sentence.
-2. How does it do it? This is where you give a short explanation that a non-technical person can follow.
-3. How complex is it? An overview if it's a first approach, but you should be able to give an estimate in man-hours.
+2. How does it do it? This is where you give a short explanation -- two or three sentences. If it's about the entire project, even a non-technical person should be able to follow it. If it's a technical module, be brief so the other technical person can understand it quickly.
+3. How complex is it? Here you can explain what will be required to build it and how hard it will be, and you should be able to give an estimate in man-hours.
 4. What are the main problems you'll face when implementing it? If you know what is likely to go wrong you can avoid potential problems and be ready for the "unknown unknowns".
 
 If you can answer these questions, you have a solid understand of what you are about to do.
@@ -20,7 +26,7 @@ Let's apply it to a few well know pieces of software. See how you can easily gue
 2. How does it do it?
    - It creates an index of every web page around, and uses certain metrics to rank which pages are better related to your search query.
 3. How complex is it?
-   - It's fairly complex: it has to continuously read the entire web, store a local copy in a way that is really fast to search and have very well calibrated metrics to find the best results and not be prone to spamming.
+   - It's fairly complex: it has to continuously read the entire web, store a local copy of webpages in a way that is really fast to search and have very well calibrated metrics to find the best results. It also needs to be robust to be always online, and not be prone to spamming.
 4. What are the main problems you'll face when implementing it?
    - Crawling vast amounts of pages will require considerable bandwidth and a smart software to find these pages and not be caught in loops. Storage will be in petabytes, so you'll need an efficient way to store the pages in a previously parsed form and with extremely fast index and search algorithms. Everything needs to be distributed among vast hordes of computers, so you need proper management for them and you need to be fault-tolerant, because in those numbers and handling external data things are bound to break.
 
@@ -47,15 +53,13 @@ Have a clear and well written specification.
 
 Imagine you are building a house. Are you going to hire people and say “well, I want a house. Start it and we’ll define things along the way”? No, you draw a blueprint, you make a 3D model to see what it will look like, the engineer will plan its structure to hold its weight properly, the architect will make it look pretty and define materials, you'll think about the size of your living room before you buy a couch. **Why should it be different with software?**
 
-There are many ways to specify software, some very technical and complex. One you should definitely do (particularly for web/mobile apps, which is the main target of this book) is literally to draw your software: do a wireframe (what we call sketching the software screens). There's a ton of online tools that you can use to do it yourself (here's a free and good one, though I have no relation to them at all: http://draw.io/).
+There are many ways to specify software, some very technical and complex. One you should definitely do (particularly for web/mobile apps, which is the main target of this book) is literally to draw your software: do a wireframe (what we call sketching the software screens). You can draw it yourself if you are the creator of your app (but get a designer to redo it properly, before it is implemented). At this point you should not be worried with the design details, colors, beauty, even usability. It should have everything you want, however. Draw all the screens you think you need. This guarantees that the project has a good overview of what to build.
 
-You can draw it yourself if you are the creator of your app (but get a designer to redo it properly later). At this point you should not be worried with the design details, colors, beauty, even usability. It should have everything you want, however. Draw all the screens you think you need. This guarantees that the project has a good overview of what to build.
-
-Once you get a proper wireframe from a designer, based on the minimum version you had before, you have a good way to verify what is being done. Developers can implement it, and managers can check and say “that's not what we agreed, see, this is the plan”.
+What you are striving for here is a simple, consistent way to let users do something. Try to focus here: instead of allowing for all kinds of options, make sure that the most common paths can be done very quickly and easily. A good UX designer will be able to take an idea and make a proper flow, that is simple and clear. Once you get a proper wireframe from a designer, based on the minimum version you had before, you have a good way to check if it's good. Then developers can implement it, and managers can check if it was implemented as specified.
 
 ## Do not change your project mid way
 
-Going back to the house example, what happens if you suddenly decide that you want a pool in the middle of the living room, a basement that didn’t exist and four extra floors when half the house is already built? Makes no sense, right. Yet that is what people often do with software.
+Going back to the house example, what happens if you suddenly decide that you want a pool on the middle of the living room, a basement that wasn't planned for when you are already building the second floor, or perhaps and four extra floors when half the house is already built? Makes no sense, right? Yet that is what people often do with software.
 
 ::: comment
 “Let's add this extra unplanned thing” is a sure way to get delays and bugs.
@@ -73,15 +77,18 @@ If you are hiring outside people, remember it's not fair to add new features and
 
 MVP, or Minimum Viable Project, is what people strive to get out as soon as possible. Just remember: MVP is not a prototype. It's something your customers will see and hopefully use. And if their first experience with your product is bad, they won't use it again. It's way harder to convince someone to test your software again when they already didn't like it the first time.
 
+You think you have the perfect solution for a certain problem. But would your customers agree with you? Would your users also think it's simple to use? Test it. Show the screens to your users. Make a mockup demo and see how they interact.
+
 Things you should **NOT** ignore in a MVP:
 
 - UI, or user interface. You application has to look good. No excuses. It will certainly look better in time, but make sure the first design is a proper beautiful design. Beauty is very subjective, so ask other people. "Does it look ugly?" is all you need to ask (and to people who won't be afraid to say that it looks ugly if it does).
 - UX, or user experience. If users find your application hard to use they won't use it. It has to be consistent, clean, easy to use, intuitive. Again, it's not "I like it". It's "I tried it with my mother and she could use it without any help or instructions". Really. You need to test it with users that have never seen it before.
 - killer features. If your application does just basic things, is no better than competition and there's not a single answer for "what's the killer feature that will make users love it", you are decreasing your chances to succeed.
+- talking to your customers. Perhaps what you think it's important is not what they think it's important. Perhaps you incredible solution doesn't work for them. Perhaps it should, but they just don't want to change the way they are doing things now.
 
-## Software developers are bad visual designers
+## Design is important
 
-I’ve not meet yet a developer that is a really good visual designer. To be honest, and I include myself in this category, usually they are awful. And there's another problem, good designers are even more rare than good developers. If you hire a team of developers, either make sure that they have a designer there.
+I’ve not meet yet a developer that is a really good visual designer. To be honest, and I include myself in this category, usually they are awful. And there's another problem, good designers are even more rare than good developers. If you hire a team of developers, either make sure that they have a designer there. But don't expect designers to write code, or to be good product managers. Hire the right people for the job.
 
 The designer is the person who will take the project idea and first description, or perhaps a really rough wireframe, and change them into a beautiful app that people will say “wow that is so pretty”. But the designer should also **make your software easy to use**, which is something many designers just don’t care about, and many project managers disregard. They don’t care that it takes 5 clicks to do a basic operation, and users hate the app.
 
@@ -93,7 +100,9 @@ A good designer will create screens in different sizes, adapt content to the dif
 
 Oh, and can you hire a freelance designer? Yes, and that can work well, but have all this in mind and make an agreement that is clear about the deliveries, any support of future changes.
 
-## Hire people who do things well
+## Hire the right (and good) people for the job
+
+I’ve not meet yet a developer that is a really good visual designer. To be honest, and I include myself in this category, usually they are awful. And there's another problem, good designers are even more rare than good developers. If you hire a team of developers, either make sure that they have a designer there. But don't expect designers to write code, or to be good product managers. Hire the right people for the job.
 
 You get what you pay for. Software is even worse, because though it will may look fine on the screen, it may be awful under the hood. It's really like a car that looks good but has an old broken engine.
 
@@ -103,41 +112,33 @@ Remember that you’ll have to maintain your software for ever. If it starts wit
 
 New developers are like new anything: they do not have the experience or expertise to build a big project in a well organized way. Even experienced developers often make bad choices and start over (we call that “refactoring” and it's essentially tearing down a wall and building it again).
 
-Hire experienced people who know what they are doing.
+Hire experienced people who know what they are doing. And for your needs. If you need one logo for a t-shirt store, sure, hire a freelance designer. If you need a designer for your software, then think about it twice. Good freelancers tend to be rare for the single reason that, when they are good, they get offers to be hired.
+
+Hiring a single freelancer for anything other than small projects, like a small website, is a certain way to shoot a project on the foot. I’m tired of hearing stories that go “then the freelancer disappeared” or “he never delivered, was always late” and “it was so buggy and he never fixed it.” Even if they are great (perhaps it's you, reading the book!), remember: software that can be tackled by a single person within a reasonable time frame is uncommon. Most software takes a lot of time to write, and multiple developers.
+
+For anything that will last more than two weeks, four tops, and which will require more work later, either hire a team to work in house, or get a company that knows what it is doing and that you can be sure they won’t just change their email and phone number and disappear.
 
 ## Talk about it: people are unlikely to steal your idea
 
 “I want a software but I can’t tell you what it is because you’ll steal it”.
 
-It's true that sometimes people steal ideas, but most people are not going to do that, if not because they are moral just because they lack the expertise, money, time, desire and drive to implement them. There's a lot of work to make an idea into a prototype, then to a product, then to properly market it. If ideas by themselves were so valuable there would be people selling them. Have you ever bought an idea? Have you ever seen an idea store?
+It's true that sometimes people steal ideas, but most people are not going to do that, if not because they are moral just because they lack the expertise, money, time, desire and drive to implement them. It is 99% perspiration. There's a lot of work to make an idea into a prototype, then into a product, then to properly market it. If ideas by themselves were so valuable there would be people selling them. Have you ever bought an idea? Have you ever seen a store selling ideas?
 
 Before you even start a project, you should tell your idea to other people to be sure it will work. Get feedback and see if everyone agrees that your idea is really great. Are they going to use it?
 
-When you’re hiring a developer, get a Non-Disclosure Agreement and tell them your idea. Any decent developer company will have a NDA ready for you to sign.
-
-## Avoid hiring a single freelancer
-
-Sorry any good freelancers out there. I’ve been one of you and I know you exist, but let's face it, you are rare. No matter how good you are, there's something else: software that can be tackled by a single person within a reasonable time frame is uncommon. Most software takes a lot of time to write.
-
-Hiring a single freelancer for anything other than small projects, like a small website, is a certain way to shoot a project on the foot. I’m tired of hearing stories that go “then the freelancer disappeared” or “he never delivered, was always late” and “it was so buggy and he never fixed it.”
-
-Freelancers are always worried about their income, so once they have you as a customer they start looking for the next one. And they often (but not always!) are not very serious. It's fine when you’re hiring them for a short time, but when they’re writing software that will be the basis of your project and you’ll need long term support, maintenance and strict deadlines, you’re transferring a fundamental part of your business into the hands of a single person that has no attachment to you or your company. Besides, even good people get sick, take vacations, have unexpected problems or decide to quit.
-
-For anything that will last more than two weeks, four tops, and which will require more work later, either hire a team to work inhouse, or get a company that knows what it is doing and that you can be sure they won’t just change their email and phone number and disappear.
+When you’re hiring a developer and want to go over details, just get a Non-Disclosure Agreement and tell them your idea. Any decent developer company will have a NDA ready for you to sign.
 
 ## Things break: tests and more tests
 
-I have never, ever, in my many years developing and in dozens of projects and customers, heard this phrase when being hired as a software house: “what kind of testing do you do?”
+In my many years developing and in dozens of projects and customers, I only heard this phrase when being hired as a software house once: “what kind of testing do you do?”
 
-Most people don’t even know that you can write automated tests; in other words, code to test your code. This is (or at least it should be) mandatory for any project at all. Things break. You change something here and you break something there. It is part of software development. Sometimes you need to make big changes that may have effects all over your software.
+Most non-technical people don’t even know that you can write automated tests; in other words, code to test your code. This is (or at least it should be) mandatory for any project at all. Things break. You change something here and you break something there. It is part of software development. Sometimes you need to make big changes that may have effects all over your software.
 
-To avoid regression you write automated tests. And any respectable developer will run these tests all day long, whenever anything changes, automatically. It's called Continuous Integration. Ask your developer about it, about what kinds of tests they do (there are lots of kinds) and why they are good for your project.
-
-Take note, developers don’t like to do tests for several reasons. First, it's boring! Second, it takes time. Third, customers don’t ask for them or pay more. So why bother?
+To avoid regression you write automated tests. And any respectable developer will keep an eye for these tests all day long, which are ran automatically whenever anything changes. It's called Continuous Integration. Yet usually developers don’t like to do tests for several reasons. First, it's boring! Second, it takes time. Third, customers don’t ask for them or pay more. So why bother?
 
 Then what happens is buggy software that is always broken. Whenever a bug is fixed something else breaks.
 
-In my projects I tend to spend about a third of the development time writing and maintaining tests (because tests are code, and they also break and have bugs themselves!). Sometimes we spend even more, around 40% to 50%. Every build is tracked, and whenever something breaks we know it right away. Any project we have has hundreds to thousands of individual tests, and tens of thousands of points asserted.
+My personal rule is to spend about a third of the development time writing and maintaining tests (because tests are code, and they also break and have bugs themselves!). Sometimes we spend even more, around 40% to 50%.
 
 ## Maintenance is what will get you
 

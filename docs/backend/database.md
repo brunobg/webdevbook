@@ -12,6 +12,10 @@ It's wise that the developer uses the same kind of database you are using in pro
 
 While you might need to use SQL queries directly in your code, we'll deal here with Eloquent, Laravel's ORM.
 
+## How to plan a proper SQL schema
+
+TODO
+
 ## Migrations
 
 Migrations are the files that create or alter the database schema. They are responsible for creating tables for your [models](./models.md).
