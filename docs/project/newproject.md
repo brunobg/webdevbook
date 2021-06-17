@@ -1,11 +1,48 @@
-# Software projects for... everyone
+# What everyone should know about software projects
 
-So, you have a new software project. This section may be interesting even for non-developers: perhaps you want to build your own app. Or you are a software developer with a new project that you are leading for the first time. You are creating your own startup. This section is a very brief overview of what you should have in mind.
+So, you have a new software project. This section may be interesting even for non-developers: perhaps you want to build your own app. Or you are a software developer with a new project that you are leading for the first time. You are creating your own startup. You want to invest on a software product. No matter what the reason, this section is a very brief overview of what you should have in mind.
 
-:::comment
-**Failure reason #1**
+The basic truth is: **we don't know how to build software like we build skyscrapers yet**. Our methodologies have improved with time, but a [lot of projects still fail](https://www.projectsmart.co.uk/white-papers/chaos-report.pdf): only about 1/3 of the projects are considered successful. When you take into account large projects only, that figure drops to 8%. Time overruns? The average overrun is 222% of the original time estimate, and only 14% of the projects had less than 20% of overrun.
 
-People don't know what they are building.
+There are many reasons why projects fail. That report from the [Standish Group](https://www.projectsmart.co.uk/white-papers/chaos-report.pdf) lists the most common factors for challenged projects:
+
+| #   | Reason                                   | Percentage |
+| --- | ---------------------------------------- | ---------- |
+| 1.  | Lack of User Input                       | 12.8%      |
+| 2.  | Incomplete Requirements & Specifications | 12.3%      |
+| 3.  | Changing Requirements & Specifications   | 11.8%      |
+| 4.  | Lack of Executive Support                | 7.5%       |
+| 5.  | Technology Incompetence                  | 7.0%       |
+| 6.  | Lack of Resources                        | 6.4%       |
+| 7.  | Unrealistic Expectations                 | 5.9%       |
+| 8.  | Unclear Objectives                       | 5.3%       |
+| 9.  | Unrealistic Time Frames                  | 4.3%       |
+| 10. | New Technology                           | 3.7%       |
+
+And these are the factors that impaired and cancelled projects:
+
+| #   | Reason                                 | Percentage |
+| --- | -------------------------------------- | ---------- |
+| 1.  | Incomplete Requirements                | 13.1%      |
+| 2.  | Lack of User Involvement               | 12.4%      |
+| 3.  | Lack of Resources                      | 10.6%      |
+| 4.  | Unrealistic Expectations               | 9.9%       |
+| 5.  | Lack of Executive Support              | 9.3%       |
+| 6.  | Changing Requirements & Specifications | 8.7%       |
+| 7.  | Lack of Planning                       | 8.1%       |
+| 8.  | Didn't Need It Any Longer              | 7.5%       |
+| 9.  | Lack of IT Management                  | 6.2%       |
+| 10. | Technology Illiteracy                  | 4.3%       |
+
+Notice how the two main factors were linked to incomplete and changing requirements and lack of user involvement. The rest of this chapter will go over many common problems, but here is a TL;DR: for you:
+
+:::tip
+
+The two most important things to do in your project:
+
+1. Involve users early and often, and talk about your project to your customer base.
+2. Know what you are building, have a clear roadmap and clear requirements.
+
 :::
 
 ## What is your project?

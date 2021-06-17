@@ -1,8 +1,6 @@
 # Software development methodology
 
-## It's about consistency
-
-The reason you want to have a methodology for your software is to have consistency and predictability. Methodologies are there to ensure you can have a reasonable guess of how long a project will take to be written
+The reason you want to have a methodology for your software is to have consistency and predictability. Methodologies are there to ensure you can have a reasonable guess of how long a project will take to be developed.
 
 ## Waterfall, Agile...
 
@@ -20,7 +18,11 @@ Then agile methodologies came by. The name encompasses a range of practices, suc
 
 As usual, both approaches have advantages and disadvantages.
 
-Waterfall has a very clear picture of the entire application. One common problem of agile is to plan just for the next sprint, with a very short sighted view of the project as a whole; it's like instead of looking at the entire map to know where you are going you only make decisions for every street corner. You might end up at a cul-de-sac. Agile is very problematic when the decision makers do not understand that sprints are not complete new application redesigns and opportunities for new features. Customers tend to hate waterfall, however, because after four or six months they get the news that the application is not ready and what is ready is not at all what they wanted. Mixing a bit of both worlds makes sense: have a draft specification of the application as a whole that serves as a big picture roadmap, but implement features using sprints.
+Waterfall has a very clear picture of the entire application. One common problem of agile is to plan just for the next sprint, with a very short sighted view of the project as a whole; it's like instead of looking at the entire map to know where you are going you only make decisions for every street corner. You might end up at a cul-de-sac.
+
+Agile will be a source of problems when the decision makers (stakeholders, product managers) do not understand that sprints are not complete new application redesigns and opportunities for new features. Customers tend to hate waterfall, however, because after four or six months they get the news that the application is not ready and what is ready is not at all what they wanted. They are right about it.
+
+Mixing a bit of both worlds makes sense: have a draft specification of the application as a whole that serves as a big picture roadmap, but implement features using sprints. There's something called BRUF (Big Requirements Up Front) and BDUF (Big Design Up Front), which means writing all the big requirements at the beginning, in a kind of "short waterfall" attempt. It tends to suffer from the same problems of waterfall. It's better to understand that you cannot foresee everything, but that you also need to foresee a few things. It's a very different thing to try to write detailed technical requirements, and to write an overview of the product and a roadmap.
 
 ### Scrum
 
