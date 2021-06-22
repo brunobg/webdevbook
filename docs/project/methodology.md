@@ -2,7 +2,7 @@
 
 The reason you want to have a methodology for your software is to have consistency and predictability. Methodologies are there to ensure you can have a reasonable guess of how long a project will take to be developed.
 
-## Waterfall, Agile...
+## Project management: Waterfall, Agile...
 
 For a long time waterfall was the dominant methodology for software development. It's basic idea is to have a linear approach with a well defined sequence of events:
 
@@ -34,6 +34,31 @@ The scrum master is responsible to manage the team of developers and deliver goa
 
 The team of developers (which include not only programmers, but also designers, tester and any other personnel implementing the project) is self organizing and can interact freely between themselves. Ideally they should take part of meeting with the customer and product owner whenever information relevant to them is discussed.
 
-## Communication is the root of all problems
+## What your development routine should be like
 
-On the other hand water
+No matter your and your company's thoughts about project methodologies, there's a basic routine for your own development process. Nobody writes perfect code right away. We all follow these basic four steps:
+
+1. Analyse the specification/requirements. Discuss and correct any problems there before implementing. Requirements should include user stories.
+2. Write code and tests following the requirements. Make sure your tests handle all relevant cases.
+3. Make your code work properly. Your first version will probably be buggy. Pass all tests.
+4. Once your code works, go back and clean it. You may break it while cleaning it up, but that's you'll have tests to make sure it's still working.
+
+The first three steps are very clear. A good specification covers all the questions a developer will have during implementation. Writing code and tests is our bread and butter, and by following the user stories and code coverage your tests should be ok ([remember to test invalid cases!](../backend/testing.md)). If your tests are not passing, you fix your code. But what about the fourth step? What is clean code?
+
+There are all many definitions of what clean code is. There are whole books about it, like Robert "Uncle Bob" C. Martin's "Clean Code". There's no perfect definition. Here's what he has to say:
+
+:::tip
+Clean code is code that has been taken care of. Someone has taken the time to keep it simple and orderly. They have paid appropriate attention to details. They have cared.
+
+— Robert C. Martin
+:::
+
+Another proposal comes from [this cartoon ](https://www.osnews.com/story/19266/wtfsm/):
+
+![WTFs per minute](./images/wtfm.jpg)
+
+Since standards are so good that we should have a lot of them, let me venture my own definition of clean code
+
+:::tip
+Clean code is code other people read and understand, and have no suggestions to make it clearer.
+:::
