@@ -2,9 +2,9 @@
 
 So, you have a new software project. This section may be interesting even for non-developers: perhaps you want to build your own app. Or you are a software developer with a new project that you are leading for the first time. You are creating your own startup. You want to invest on a software product. No matter what the reason, this section is a very brief overview of what you should have in mind.
 
-The basic truth is: **we don't know how to build software like we build skyscrapers yet**. Our methodologies have improved with time, but a [lot of projects still fail](https://www.projectsmart.co.uk/white-papers/chaos-report.pdf): only about 1/3 of the projects are considered successful. When you take into account large projects only, that figure drops to 8%. Time overruns? The average overrun is 222% of the original time estimate, and only 14% of the projects had less than 20% of overrun.
+The basic truth is: **we don't know how to build software like we build skyscrapers yet** -- or like cars, or like pretty much everything else in engineering. Our methodologies have improved with time, but a [lot of projects still fail](https://www.projectsmart.co.uk/white-papers/chaos-report.pdf): only about 1/3 of the projects are considered successful. When you take into account large projects only, that figure drops to 8%. Time overruns? The average overrun is 222% of the original time estimate, and only 14% of the projects had less than 20% of overrun.
 
-There are many reasons why projects fail. That report from the [Standish Group](https://www.projectsmart.co.uk/white-papers/chaos-report.pdf) lists the most common factors for challenged projects:
+There are many reasons why projects fail. [This same report from the Standish Group](https://www.projectsmart.co.uk/white-papers/chaos-report.pdf) lists the most common factors for challenged projects:
 
 | #   | Reason                                   | Percentage |
 | --- | ---------------------------------------- | ---------- |
@@ -34,7 +34,9 @@ And these are the factors that impaired and cancelled projects:
 | 9.  | Lack of IT Management                  | 6.2%       |
 | 10. | Technology Illiteracy                  | 4.3%       |
 
-Notice how the two main factors were linked to incomplete and changing requirements and lack of user involvement. The rest of this chapter will go over many common problems, but here is a TL;DR: for you:
+Notice how the two main factors were linked to incomplete and changing requirements and lack of user involvement. If you are a software developer, play bingo with these 10 items. If your project has 5 or more of them... it's a bad sign.
+
+The rest of this chapter will go over many common problems, but here is a TL;DR: for you:
 
 :::tip
 
@@ -44,6 +46,8 @@ The two most important things to do in your project:
 2. Know what you are building, have a clear roadmap and clear requirements.
 
 :::
+
+There's a criticism that we shouldn't compare writing software to making buildings. Because it's certain that one of the reasons we don't have reliable software projects like we do constructions is because we are constantly changing software, improving it, making it more modern, adding new features, maintaining for dependencies that changes. But some buildings are constantly being changed as well, with new annexes, changing the façades, constant renovations. The difference is not so much that buildings are static, but that we know exactly what we are going to build (or how we'll renew) before we start the work. But many people start writing code or developing projects without even a decent sketch of what they are trying to achieve.
 
 ## What is your project?
 
@@ -88,7 +92,7 @@ If you learn one thing from this chapter it should be this one:
 Have a clear and well written specification.
 :::
 
-Imagine you are building a house. Are you going to hire people and say “well, I want a house. Start it and we’ll define things along the way”? No, you draw a blueprint, you make a 3D model to see what it will look like, the engineer will plan its structure to hold its weight properly, the architect will make it look pretty and define materials, you'll think about the size of your living room before you buy a couch. **Why should it be different with software?**
+Imagine you are building a house. Are you going to hire people and say “well, I want some kind of a house. Start it and we’ll define things along the way”? No, you draw a blueprint, you make a 3D model to see what it will look like, the engineer will plan its structure to hold its weight properly, the architect will make it look pretty and define materials, you'll think about the size of your living room before you buy a couch. **Why should it be different with software?** You often pick the finishing way after you start building, but you don't decide mid-way in the construction that "you know what... we are not building a house anymore, it's a mall now". These kinds of fundamental changes to software, allied to a complete lack of planning for the architecture that some developers do are a major source of problems in projects.
 
 There are many ways to specify software, some very technical and complex. One you should definitely do (particularly for web/mobile apps, which is the main target of this book) is literally to draw your software: do a wireframe (what we call sketching the software screens). You can draw it yourself if you are the creator of your app (but get a designer to redo it properly, before it is implemented). At this point you should not be worried with the design details, colors, beauty, even usability. It should have everything you want, however. Draw all the screens you think you need. This guarantees that the project has a good overview of what to build.
 
@@ -115,6 +119,8 @@ If you are hiring outside people, remember it's not fair to add new features and
 MVP, or Minimum Viable Project, is what people strive to get out as soon as possible. Just remember: MVP is not a prototype. It's something your customers will see and hopefully use. And if their first experience with your product is bad, they won't use it again. It's way harder to convince someone to test your software again when they already didn't like it the first time.
 
 You think you have the perfect solution for a certain problem. But would your customers agree with you? Would your users also think it's simple to use? Test it. Show the screens to your users. Make a mockup demo and see how they interact.
+
+MVP is not about doing things badly, it's about finding a minimum set of features that is good enough to take to market. Don't use it as an excuse to cut important corners. Make the shortest possible list of what your software needs. Then go over it again, because you certainly added too many. What is the most common path a user will take? Your MVP should handle that, if possible only that, but make the experience as good as a final, polished product. Because your customers won't care for a bad experience.
 
 Things you should **NOT** ignore in a MVP:
 
