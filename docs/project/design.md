@@ -34,7 +34,18 @@ Just like when writing code we don't want to implement everything from scratch, 
 A design system is a collection of reusable components, structured by clear standards, which can be used together to build any number of applications with a consistent interface.
 :::
 
+## Designers and developers need to talk to each other
 
+Projects sometimes work like this:
+
+- Someone, the "boss", decides that a feature is needed. Meetings are held, often without the people who actually knows the project. High level decisions are made with some hand waving.
+- Designers are told about this new feature. There's no detailed spec, and designers are not given any technical guidance. They sit and make new screens with their design tools.
+- Developers are told about this new feature. There's no detailed spec. They are sometimes told to start developing it and "design will come soon"; sometimes they get the designs from the start. Designs are very hard to implement because they don't match what was built before. There are bugs all over the place because there was no technical analysis before the designs were built. Designers never test the actual implementation, so they don't use the software they drew. If they don't use it, they never see UX problems.
+- People spend months complaining about problems found in QA or in production, going back to fixing designs, which are re-implemented and add new bugs, because nobody is ever doing a proper check of everything at once.
+
+Designers must be in continuous communication with developers when creating. Devs will push designers to do something that is easy to implement; designers will push to do something that is pretty. By working together things are balanced out.
+
+Don't keep developers out of the specification and design phases, and don't keep designers out of the specification and implementation phases.
 
 ## What a good design should consider
 
@@ -54,9 +65,8 @@ You'll find several heuristics to make a good user experience. They are useful, 
 
 ## Real life testing and quality assurance
 
-
 ## Cardinal sins designers do
 
 1. Not paying attention to users. They just sit in front of the screen and draw. Your designer should know the user, know the problem, and work on a solution to the actual existing problems, not drop widgets and components randomly.
 2. Not using their designs. I've seen projects whose designers **never** used the application. They just sent wireframes and "pixel-perfect designs" drawn with some application. If asked to actually perform a basic task on the software they were confused and had a hard time. Designers need to use the application during development.
-3. Not understanding tools. I've seen plenty of designers who take a CSS framework and don't know how it works. In fact, I've seen plenty of designers that can't explain headings (h1, h2), picking them randomly according to whatever they feel is a good font size instead of a proper consistent design. The result is that they keep reinventing the wheel with "custom" 
+3. Not understanding tools. I've seen plenty of designers who take a CSS framework and don't know how it works. In fact, I've seen plenty of designers that can't explain headings (h1, h2), picking them randomly according to whatever they feel is a good font size instead of a proper consistent design. The result is that they keep reinventing the wheel with "custom"

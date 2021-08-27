@@ -43,7 +43,7 @@ The rest of this chapter will go over many common problems, but here is a TL;DR:
 The two most important things to do in your project:
 
 1. Involve users early and often, and talk about your project to your customer base.
-2. Know what you are building, have a clear roadmap and clear requirements.
+2. Know what you are building: have a clear roadmap and clear requirements before things are built.
 
 :::
 
@@ -103,20 +103,20 @@ What you are striving for here is a simple, consistent way to let users do somet
 Going back to the house example, what happens if you suddenly decide that you want a pool on the middle of the living room, a basement that wasn't planned for when you are already building the second floor, or perhaps and four extra floors when half the house is already built? Makes no sense, right? Yet that is what people often do with software.
 
 ::: comment
-“Let's add this extra unplanned thing” is a sure way to get delays and bugs.
+“Let's add this extra unplanned major thing” is a sure way to get delays and bugs.
 :::
 
 People often start with a software to organize recipes and in two months decide it should include a flight simulator. No.
 
-Once you start development, freeze the features for each milestone. All those great new ideas you have, write them somewhere. Wait for the software to be ready and working, delivered as planned. Get a version out first that does what it was designed to do.
+Once you start development, freeze the features for each milestone. All those great new ideas you have, write them somewhere. Wait for the current milestone to be ready and working, delivered as planned. Get a new version out first that does what it was designed to do. Take advantage of this time to plan the changes so that you have an updated, clear roadmap for the next iteration.
 
-Now, it's true that things change, but if you realized midway of your project that your market is very different and you are pivoting and changing half of your software, understand that you may need to throw away parts of the existing code and write them from scratch. Unless you want a Frankenstein monster that will bite you in the ass later on. If you do need to make the changes, call your developers and tell them you need several new improvements, and get a new quote. Or sit down if you are the lead developer and get a detailed plan for changes, trying to prioritize what is most urgent, understanding that things might not be perfect but shouldn't be awful.
+Now, it's true that things change, but if you realized midway of your project that your market is very different and you are pivoting and changing half of your software, understand that you may need to significantly refactor and throw away parts of the existing code, sometimes writing them from scratch. Unless you want a Frankenstein monster that will bite you in the ass later on. If you do need to make the changes, call your developers and tell them you need several new improvements, and get a new quote. Or sit down if you are the lead developer and get a detailed plan for changes, trying to prioritize what is most urgent, understanding that things might not be perfect but shouldn't be awful.
 
 If you are hiring outside people, remember it's not fair to add new features and expect them to do them for no additional cost. If they accept that they’ll cram it anyway possible to get rid of the backlog as soon as possible, sacrificing quality in the way.
 
 ## MVP is not an excuse
 
-MVP, or Minimum Viable Project, is what people strive to get out as soon as possible. Just remember: MVP is not a prototype. It's something your customers will see and hopefully use. And if their first experience with your product is bad, they won't use it again. It's way harder to convince someone to test your software again when they already didn't like it the first time.
+MVP, or Minimum Viable Project, is what people strive to get out as soon as possible. Just remember: MVP and prototype are two different things. A prototype is an internal version to validate ideas. A MVP is something your customers will see, test and hopefully like enough buy. And if their first experience with your product is bad, they won't use it again. It's way harder to convince someone to try something again when they already didn't like it the first time.
 
 You think you have the perfect solution for a certain problem. But would your customers agree with you? Would your users also think it's simple to use? Test it. Show the screens to your users. Make a mockup demo and see how they interact.
 
